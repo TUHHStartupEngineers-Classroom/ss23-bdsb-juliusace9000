@@ -22,3 +22,54 @@ Tibbles are data frames but have a better behavior. The term tibble and data fra
 ## Import
 
 Data can be imported from Excel sheets for example. The data is stored in the RAM of the computer. If there is to much data or the RAM is too small, that might cause issues.
+
+#### Example
+
+```         
+diamonds2 <- readRDS("diamonds2.rds")
+diamonds2 %>% head(n = 5)
+```
+
+## Tidy
+
+Data can be reshaped with tidyr. Afterwards, every observation is represented as one row, each variable is represented by one column and every data tables cell contains one value.
+
+#### Example
+
+```         
+diamonds4 <- readRDS("diamonds4.rds")
+diamonds4 %>% 
+  separate(col = dim,
+           into = c("x", "y", "z"),
+           sep = "/",
+           convert = T)
+```
+
+`seperate()` is used if one or more columns contain more than one value.
+
+`unite()` is used to paste multiple columns into one, the opposite of `separate()`.
+
+## Transform
+
+`dplyr` is a grammar of data manipulation to solve the most common data manipulation challenges. This means for example the creation of new variables. There are different functions for different use cases which can be called.
+
+#### Examples
+
+```         
+library(ggplot2)
+library(dplyr)
+diamonds %>% 
+    filter(cut == 'Ideal' | cut == 'Premium', carat >= 0.23) %>% 
+    head(5)
+```
+
+`filter()` in this context with this arguments shows every data line where carat is more or equal to 0.23.
+
+```         
+diamonds %>% 
+  arrange(cut, carat, desc(price))
+```
+
+`arrange()` is used for reordering the rows, in this case for descending price.
+
+`rename()` changes the name of a column.
