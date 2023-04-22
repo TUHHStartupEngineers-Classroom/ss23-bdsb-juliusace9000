@@ -94,7 +94,15 @@ sales_by_year_cat_1 %>%
 # 7.0 Writing Files ----
 
 # 7.1 Excel ----
+library("writexl")
+bike_orderlines_wrangled %>%
+  write_xlsx("bikes/02_wrangled_data/bike_orderlines.xlsx")
 
 # 7.2 CSV ----
-
+bike_orderlines_wrangled %>% 
+  write_csv("bikes/02_wrangled_data/bike_orderlines.csv")
 # 7.3 RDS ----
+bike_orderlines_wrangled %>% 
+  write_rds("bikes/02_wrangled_data/bike_orderlines.rds")
+
+# Challenge

@@ -74,10 +74,4 @@ diamonds %>%
 
 `rename()` changes the name of a column.
 
-# Business Case
 
-I have the role of a data scientist. I have to look for opportunities to improve the sales. We are interested in
-
--   Sales by year
-
--   Sales by year and product family
