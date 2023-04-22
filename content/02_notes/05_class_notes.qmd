@@ -73,3 +73,11 @@ diamonds %>%
 `arrange()` is used for reordering the rows, in this case for descending price.
 
 `rename()` changes the name of a column.
+
+# Business Case
+
+I have the role of a data scientist. I have to look for opportunities to improve the sales. We are interested in
+
+-   Sales by year
+
+-   Sales by year and product family
