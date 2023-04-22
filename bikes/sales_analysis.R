@@ -2,11 +2,13 @@
 # SALES ANALYSIS ----
 
 # 1.0 Load libraries ----
-
+library("tidyverse")
 
 # 2.0 Importing Files ----
-
-
+bikes <- readxl::read_excel("bikes/01_raw_data/bikes.xlsx")
+bikeshops <- readxl::read_excel("bikes/01_raw_data/bikeshops.xlsx")
+orderlines <- readxl::read_excel("bikes/01_raw_data/orderlines.xlsx")
+print(bikes)
 # 3.0 Examining Data ----
 
 
