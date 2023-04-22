@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "content/03_other/06_links.html",
-    "href": "content/03_other/06_links.html",
-    "title": "Links",
-    "section": "",
-    "text": "R is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, and lots of other stuff. Another free program is R-studio, that provides a nice graphic interface for R. Download R first, then download R-studio. Both can run on PCs, Macs or Linux. Students will be learning R in the stats labs using the lab manual .\n\n\n\n\nGoogle is great, Google your problem\nStackoverflow is great, google will often take you there because someone has already asked your question, and someone else has answered, usually many people have answered your question many ways."
-  },
-  {
-    "objectID": "content/01_journal/03_data_wrangling.html",
-    "href": "content/01_journal/03_data_wrangling.html",
-    "title": "Data Wrangling",
-    "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
-  },
-  {
-    "objectID": "content/01_journal/04_data_visualization.html",
-    "href": "content/01_journal/04_data_visualization.html",
-    "title": "Data Visualization",
-    "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
-  },
-  {
     "objectID": "content/01_journal/01_tidyverse.html",
     "href": "content/01_journal/01_tidyverse.html",
     "title": "Tidyverse",
@@ -42,11 +21,32 @@
     "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
   },
   {
+    "objectID": "content/01_journal/03_data_wrangling.html",
+    "href": "content/01_journal/03_data_wrangling.html",
+    "title": "Data Wrangling",
+    "section": "",
+    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+  },
+  {
+    "objectID": "content/01_journal/04_data_visualization.html",
+    "href": "content/01_journal/04_data_visualization.html",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
+  },
+  {
     "objectID": "content/02_notes/05_class_notes.html",
     "href": "content/02_notes/05_class_notes.html",
     "title": "Class Notes",
     "section": "",
-    "text": "IMPORTANT: You can delete everything in here and start fresh. You might want to start by not deleting anything above this line until you know what that stuff is doing.\nThis is an .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header."
+    "text": "Tidyverse is a helpful collection of R packages by RStudios chief scientist. They are installed to do proper data science.\n\n\nPackages are installed via install.packages(\"packagename\") . We also need Rtools to be able to compile R packages.\n\n\n\nThe pipe operator %>% is used to concatenate function calls.\n\n\n\nTibbles are data frames but have a better behavior. The term tibble and data frame will be used interchangeably. It is a better data.frame realization. data frames can be typecasted to tibble.\n\n\n\nData can be imported from Excel sheets for example. The data is stored in the RAM of the computer. If there is to much data or the RAM is too small, that might cause issues.\n\n\ndiamonds2 <- readRDS(\"diamonds2.rds\")\ndiamonds2 %>% head(n = 5)\n\n\n\n\nData can be reshaped with tidyr. Afterwards, every observation is represented as one row, each variable is represented by one column and every data tables cell contains one value.\n\n\ndiamonds4 <- readRDS(\"diamonds4.rds\")\ndiamonds4 %>% \n  separate(col = dim,\n           into = c(\"x\", \"y\", \"z\"),\n           sep = \"/\",\n           convert = T)\nseperate() is used if one or more columns contain more than one value.\nunite() is used to paste multiple columns into one, the opposite of separate().\n\n\n\n\ndplyr is a grammar of data manipulation to solve the most common data manipulation challenges. This means for example the creation of new variables. There are different functions for different use cases which can be called.\n\n\nlibrary(ggplot2)\nlibrary(dplyr)\ndiamonds %>% \n    filter(cut == 'Ideal' | cut == 'Premium', carat >= 0.23) %>% \n    head(5)\nfilter() in this context with this arguments shows every data line where carat is more or equal to 0.23.\ndiamonds %>% \n  arrange(cut, carat, desc(price))\narrange() is used for reordering the rows, in this case for descending price.\nrename() changes the name of a column."
+  },
+  {
+    "objectID": "content/03_other/06_links.html",
+    "href": "content/03_other/06_links.html",
+    "title": "Links",
+    "section": "",
+    "text": "R is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, and lots of other stuff. Another free program is R-studio, that provides a nice graphic interface for R. Download R first, then download R-studio. Both can run on PCs, Macs or Linux. Students will be learning R in the stats labs using the lab manual .\n\n\n\n\nGoogle is great, Google your problem\nStackoverflow is great, google will often take you there because someone has already asked your question, and someone else has answered, usually many people have answered your question many ways."
   },
   {
     "objectID": "index.html",
@@ -60,6 +60,6 @@
     "href": "index.html#how-to-use",
     "title": "My Lab Journal",
     "section": "How to use",
-    "text": "How to use\n\nAccept the assignment and get your own github repo.\nBlog/journal what you are doing in R, by editing the .qmd files.\nSee the links page for lots of helpful links on learning R.\nChange everything to make it your own.\nMake sure to render you website everytime before you want to upload changes"
+    "text": "How to use\n\nAccept the assignment and get your own github repo.\nBlog/journal what you are doing in R, by editing the .qmd files.\nSee the links page for lots of helpful links on learning R.\nChange everything to make it your own."
   }
 ]

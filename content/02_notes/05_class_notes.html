@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joschka Schwarz">
+<meta name="author" content="Julius von Sulecki">
 
 <title>MyLabJournal - Class Notes</title>
 <style>
@@ -146,7 +146,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Julius von Sulecki </p>
           </div>
   </div>
     
@@ -157,10 +157,65 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p><strong>IMPORTANT:</strong> You can delete everything in here and start fresh. You might want to start by not deleting anything above this line until you know what that stuff is doing.</p>
-<p>This is an <code>.qmd</code> file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.</p>
+<section id="tidyverse" class="level1">
+<h1>Tidyverse</h1>
+<p>Tidyverse is a helpful collection of R packages by RStudios chief scientist. They are installed to do proper data science.</p>
+<section id="installing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages">Installing Packages</h2>
+<p>Packages are installed via <code>install.packages("packagename")</code> . We also need Rtools to be able to compile R packages.</p>
+</section>
+<section id="pipes" class="level2">
+<h2 class="anchored" data-anchor-id="pipes">Pipes</h2>
+<p>The pipe operator <code>%&gt;%</code> is used to concatenate function calls.</p>
+</section>
+<section id="tibbles" class="level2">
+<h2 class="anchored" data-anchor-id="tibbles">Tibbles</h2>
+<p>Tibbles are data frames but have a better behavior. The term tibble and data frame will be used interchangeably. It is a better data.frame realization. data frames can be typecasted to tibble.</p>
+</section>
+<section id="import" class="level2">
+<h2 class="anchored" data-anchor-id="import">Import</h2>
+<p>Data can be imported from Excel sheets for example. The data is stored in the RAM of the computer. If there is to much data or the RAM is too small, that might cause issues.</p>
+<section id="example" class="level4">
+<h4 class="anchored" data-anchor-id="example">Example</h4>
+<pre><code>diamonds2 &lt;- readRDS("diamonds2.rds")
+diamonds2 %&gt;% head(n = 5)</code></pre>
+</section>
+</section>
+<section id="tidy" class="level2">
+<h2 class="anchored" data-anchor-id="tidy">Tidy</h2>
+<p>Data can be reshaped with tidyr. Afterwards, every observation is represented as one row, each variable is represented by one column and every data tables cell contains one value.</p>
+<section id="example-1" class="level4">
+<h4 class="anchored" data-anchor-id="example-1">Example</h4>
+<pre><code>diamonds4 &lt;- readRDS("diamonds4.rds")
+diamonds4 %&gt;% 
+  separate(col = dim,
+           into = c("x", "y", "z"),
+           sep = "/",
+           convert = T)</code></pre>
+<p><code>seperate()</code> is used if one or more columns contain more than one value.</p>
+<p><code>unite()</code> is used to paste multiple columns into one, the opposite of <code>separate()</code>.</p>
+</section>
+</section>
+<section id="transform" class="level2">
+<h2 class="anchored" data-anchor-id="transform">Transform</h2>
+<p><code>dplyr</code> is a grammar of data manipulation to solve the most common data manipulation challenges. This means for example the creation of new variables. There are different functions for different use cases which can be called.</p>
+<section id="examples" class="level4">
+<h4 class="anchored" data-anchor-id="examples">Examples</h4>
+<pre><code>library(ggplot2)
+library(dplyr)
+diamonds %&gt;% 
+    filter(cut == 'Ideal' | cut == 'Premium', carat &gt;= 0.23) %&gt;% 
+    head(5)</code></pre>
+<p><code>filter()</code> in this context with this arguments shows every data line where carat is more or equal to 0.23.</p>
+<pre><code>diamonds %&gt;% 
+  arrange(cut, carat, desc(price))</code></pre>
+<p><code>arrange()</code>&nbsp;is used for reordering the rows, in this case for descending price.</p>
+<p><code>rename()</code> changes the name of a column.</p>
 
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
