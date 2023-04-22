@@ -260,13 +260,13 @@ sales_by_location_and_year_tbl <- bike_orderlines_wrangled_tbl %>%
 sales_by_location_and_year_tbl %>%
   
   # Set up x, y, fill
-  ggplot(aes(x = state, y = sales, fill = year)) +
+  ggplot(aes(x = year, y = sales, fill = state)) +
   
   # Geometries
   geom_col() + # Run up to here to get a stacked bar plot
   
   # Facet
-  facet_wrap(~ year) +
+  facet_wrap(~ state) +
   
   # Formatting
   scale_y_continuous(labels = scales::dollar_format(big.mark = ".", 
