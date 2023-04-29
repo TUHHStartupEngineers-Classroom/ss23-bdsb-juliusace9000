@@ -105,7 +105,7 @@ bike_data_lst %>%
   print()
 
 
-# Challenge
+# Challenge 1
 resp <- GET(url = "https://api.open-meteo.com/v1/forecast?latitude=53.6751500&longitude=10.2259300&daily=weathercode,sunrise,sunset,rain_sum&past_days=7&forecast_days=1&timezone=Europe%2FLondon",
             add_headers(('accept'= 'application/json')))
 html <- content(resp)
@@ -115,3 +115,4 @@ weather_tbl <- tibble(html[["daily"]][["time"]], html[["daily"]][["weathercode"]
 weather_tbl %>% data.frame -> weather_df
 print(weather_df)
 
+#Challenge 2

@@ -141,6 +141,7 @@ would be written as
 ```         
 numbers_list <- map(numbers, print)
 ```
+
 ### Example
 
 ```{r}
@@ -150,11 +151,14 @@ bike_data_lst %>%
   print()
 ```
 
-#Business Case
-not working.
+#Business Case not working.
 
-#Challenge
-##1
+# Challenge 
+
+## 1
+
+The weather for a city in the north of Germany was collected for the past 7 days, including the sunrise, sunset, weathercode and the rain.
+
 ```{r}
 resp <- GET(url = "https://api.open-meteo.com/v1/forecast?latitude=53.6751500&longitude=10.2259300&daily=weathercode,sunrise,sunset,rain_sum&past_days=7&forecast_days=1&timezone=Europe%2FLondon",
             add_headers(('accept'= 'application/json')))
@@ -164,7 +168,35 @@ print(html)
 weather_tbl <- tibble(html[["daily"]][["time"]], html[["daily"]][["weathercode"]], html[["daily"]][["sunrise"]], html[["daily"]][["sunset"]], html[["daily"]][["rain_sum"]])
 weather_tbl %>% data.frame %>% print()
 ```
-##2
-```{r}
 
+## 2
+
+We scraped the electric mountainbike overview from radon bikes with the model names and the prices.
+
+```{r}
+# Challenge 2
+library(tidyverse)
+library(rvest)
+library(xopen)
+library(jsonlite)
+library(glue)
+library(stringi)
+
+
+url <- "https://www.radon-bikes.de/e-bike/mountainbike/"
+
+# People that worked on "The Dark Knight"
+bike_names <- url %>% 
+  read_html() %>% 
+  html_nodes(".bikeTitle > h4") %>%
+  html_text() 
+
+bike_prices <- url %>% 
+  read_html() %>% 
+  html_nodes(".info > div > div > span") %>%
+  html_text()
+bike_prices <- bike_prices[seq(1,length(bike_prices),2)]
+
+bikes_tbl <- tibble(bike_names, bike_prices)
+bikes_tbl %>% data.frame %>% print()
 ```
