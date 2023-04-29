@@ -9,5 +9,5 @@ Data for analysation can be imported in different ways. One way is to read data 
 
 ---
 library(RSQLite)
-con <- RSQLite::dbConnect(drv    = SQLite(), dbname = "../../../00_data/02_chinook/Chinook_Sqlite.sqlite")
+con <- RSQLite::dbConnect(drv = SQLite(), dbname = "../../00_data/02_chinook/Chinook_Sqlite.sqlite")
 ---
