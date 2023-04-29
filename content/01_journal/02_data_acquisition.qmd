@@ -1,8 +1,13 @@
 ---
 title: "Data Acquisition"
-author: "Joschka Schwarz"
+author: "Julius von Sulecki"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
+# Data Acquisition
+
+Data for analysation can be imported in different ways. One way is to read data from csv or excel sheets, another is to import it directly from databases.
+
+---
+library(RSQLite)
+con <- RSQLite::dbConnect(drv    = SQLite(), dbname = "../../../00_data/02_chinook/Chinook_Sqlite.sqlite")
+---
