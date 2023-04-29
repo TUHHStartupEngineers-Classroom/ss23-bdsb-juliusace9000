@@ -98,3 +98,12 @@ num_ratings <- html %>%
   as.numeric()
 imdb_tbl <- tibble(rank, title, year, people, rating, num_ratings)
 print(imdb_tbl)
+
+bike_data_lst <- fromJSON("00_data/bike_data.json")
+bike_data_lst %>%
+  purrr::pluck("productDetail", "variationAttributes", "values", 1, "displayValue") %>%
+  print()
+
+
+# Business Case
+

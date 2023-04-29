@@ -82,6 +82,7 @@ print(sp_500)
 ```
 
 ## And another example with the imdb movie database
+
 ```{r}
 url  <- "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
 html <- url %>% 
@@ -121,3 +122,32 @@ num_ratings <- html %>%
 imdb_tbl <- tibble(rank, title, year, people, rating, num_ratings)
 print(imdb_tbl)
 ```
+
+## Functional Programming
+
+```         
+for (variable in vector) {
+    
+}
+# Example: For Loop
+numbers <- c(1:5)
+for (i in numbers) {
+   print(i)
+}
+```
+
+would be written as
+
+```         
+numbers_list <- map(numbers, print)
+```
+### Example
+
+```{r}
+bike_data_lst <- fromJSON("../../00_data/bike_data.json")
+bike_data_lst %>%
+  purrr::pluck("productDetail", "variationAttributes", "values", 1, "displayValue") %>%
+  print()
+```
+
+#Business Case
