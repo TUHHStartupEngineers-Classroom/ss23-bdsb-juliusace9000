@@ -45,3 +45,4 @@ vignettes/*.pdf
 .DS_Store
 loan_data/Acquisition_2019Q1.txt
 loan_data/Performance_2019Q1.txt
+test_df.csv

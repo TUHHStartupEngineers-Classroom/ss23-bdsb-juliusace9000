@@ -1,5 +1,5 @@
 library("tidyverse")
-
+library("readxl")
 bikes_tbl <- read_excel("bikes/01_raw_data/bikes.xlsx") %>%
   
   # Separate product category name in main and sub
@@ -107,6 +107,8 @@ bikes_tbl %>%
 bikes_tbl %>%
   distinct(category_1, category_2, category_3)
 
+bike_orderlines_tbl <- read_rds("bikes/02_wrangled_data/bike_orderlines.rds")
+
 bike_orderlines_tbl %>%
   mutate(freight_costs = 2 * weight)
 
@@ -171,6 +173,10 @@ bike_orderlines_tbl %>%
   ungroup() %>%
   arrange(desc(count))
 
+# Create total_price column and insert missing values for demonstration
+bike_orderlines_missing <- bike_orderlines_tbl %>%
+  mutate(total_price = c(rep(NA, 4), total_price[5:nrow(.)]))
+
 # detect missing (absolute)
 bike_orderlines_missing %>%
   summarise(across(everything(), ~sum(is.na(.))))
@@ -183,10 +189,10 @@ bike_orderlines_missing %>%
 bike_orderlines_missing %>%
   filter(!is.na(total_price))
 
-bike_data_sizes_tbl %>% 
-  select(name, year, price_euro, color, size, stock_availability) %>% 
-  pivot_wider(names_from  = size, 
-              values_from = stock_availability)
+#bike_data_sizes_tbl %>% 
+#  select(name, year, price_euro, color, size, stock_availability) %>% 
+#  pivot_wider(names_from  = size, 
+#              values_from = stock_availability)
 
 bikeshop_revenue_tbl <- bike_orderlines_tbl %>%
   select(bikeshop, category_1, total_price) %>%
