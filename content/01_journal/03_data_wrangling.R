@@ -266,7 +266,7 @@ bike_orderlines_tbl %>%
 library(data.table)
 url <- "https://opendata.ecdc.europa.eu/covid19/casedistribution/csv"
 covid_data_dt <- fread(url)
-
+options(datatable.optimize=1)
 class(covid_data_dt)
 # Create a large .csv file
 test_df <- data.frame(matrix(runif(10000000), nrow=1000000))
@@ -286,7 +286,7 @@ test_dt <- data.table(ID = c("b","b","b","a","a","c"),
 
 ## FROM[WHERE, SELECT/ORDER BY/UPDATE, GROUP BY]
 
-covid_data_dt[i, j, by]
+#covid_data_dt[i, j, by]
 
 # Example (filter by year, sum cases, group by continent)
 covid_data_dt[year == 2019, sum(cases), by = continentExp]
@@ -323,6 +323,8 @@ data()
 
 # Load specified data sets
 data("airquality")
+
+options(covid_data_dt.optimize=1)
 
 # Solution 1
 aq_dt <- data.table(airquality)
@@ -419,7 +421,8 @@ covid_data_EUR_dt <- covid_data_dt[ continent == "Europe",
                                     by = .(country), 
                                     .SDcols = c("cases", "deaths")
 ]
-
+options(covid_data_dt.optimize=1)
+options(covid_data_EUR_dt.optimize=1)
 # Set key
 setkey(covid_data_EUR_dt, country)
 key(covid_data_EUR_dt)
@@ -427,6 +430,9 @@ key(covid_data_EUR_dt)
 # Create two data.tables from that
 cd_dt1 <- covid_data_EUR_dt[, .(country, cases)]
 cd_dt2 <- covid_data_EUR_dt[1:20, .(country, deaths)]
+
+options(cd_dt1.optimize=1)
+options(cd_dt2.optimize=1)
 
 # Join them
 cd_dt1[cd_dt2]
