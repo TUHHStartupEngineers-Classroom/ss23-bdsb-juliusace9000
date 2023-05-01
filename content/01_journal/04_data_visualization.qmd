@@ -1,6 +1,6 @@
 ---
 title: "Data Visualization"
-author: "Joschka Schwarz"
+author: "Julius von Sulecki"
 ---
 
 ::: callout-note
