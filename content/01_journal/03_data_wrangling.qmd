@@ -1,8 +1,5 @@
 ---
 title: "Data Wrangling"
-author: "Joschka Schwarz"
+author: "Julius von Sulecki"
 ---
 
-::: callout-note
-You can delete everything in here and start fresh.
-:::
