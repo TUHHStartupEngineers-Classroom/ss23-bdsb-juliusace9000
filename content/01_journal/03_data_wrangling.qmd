@@ -103,7 +103,7 @@ print("List the top 10 companies with the most new granted patents for August 20
 print(patent_activity_dt[1:10]) # Take the first 10 elements of the ordered list.
 ```
 # Innovation In Tech
-Similarly I performed these steps (some similar to patent dominance and recent patent activity) to find the top mainclasses:
+Similarly I performed these steps (some similar to patent dominance and recent patent activity) to find the top main classes:
 ```{r}
 # For most innovative tech sensor group and sum the uspc_tbl by mainclass_id.
 most_innovative_tech_sectors <- as.data.table(uspc_tbl)[,.(patents = .N),by = mainclass_id] %>%
