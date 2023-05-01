@@ -153,7 +153,7 @@ bike_data_lst %>%
 
 #Business Case not working.
 
-# Challenge 
+# Challenge
 
 ## 1
 
