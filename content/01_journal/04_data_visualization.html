@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joschka Schwarz">
+<meta name="author" content="Julius von Sulecki">
 
 <title>MyLabJournal - Data Visualization</title>
 <style>
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -43,6 +106,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,6 +128,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -131,7 +200,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#challenge-4.1" id="toc-challenge-4.1" class="nav-link active" data-scroll-target="#challenge-4.1"><span class="toc-section-number">1</span>  Challenge 4.1</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -148,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Julius von Sulecki </p>
           </div>
   </div>
     
@@ -159,21 +234,1613 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-1_ca5a342ce59f4c16c5ac8fe56806a231">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(<span class="st">"scales"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>) <span class="co"># loads ggplot2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+#&gt; v dplyr     1.1.2     v readr     2.1.4
+#&gt; v forcats   1.0.0     v stringr   1.5.0
+#&gt; v ggplot2   3.4.2     v tibble    3.2.1
+#&gt; v lubridate 1.9.2     v tidyr     1.3.0
+#&gt; v purrr     1.0.1     
+#&gt; -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+#&gt; x readr::col_factor() masks scales::col_factor()
+#&gt; x purrr::discard()    masks scales::discard()
+#&gt; x dplyr::filter()     masks stats::filter()
+#&gt; x dplyr::lag()        masks stats::lag()
+#&gt; i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-Note
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(<span class="st">"lubridate"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>bike_orderlines_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"../../bikes/02_wrangled_data/bike_orderlines.rds"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># 1.0 Anatomy of a ggplot ----</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># 1.1 How ggplot works ----</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># Step 1: Format data ----</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>sales_by_year_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  </span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="co"># Selecting columns to focus on and adding a year column</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>  <span class="fu">select</span>(order_date, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(order_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>  </span>
+<span id="cb3-17"><a href="#cb3-17"></a>  <span class="co"># Grouping by year, and summarizing sales</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a>  <span class="fu">summarize</span>(<span class="at">sales =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a>  </span>
+<span id="cb3-22"><a href="#cb3-22"></a>  <span class="co"># € Format Text</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a>  <span class="fu">mutate</span>(<span class="at">sales_text =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(sales, </span>
+<span id="cb3-24"><a href="#cb3-24"></a>                                     <span class="at">big.mark     =</span> <span class="st">"."</span>, </span>
+<span id="cb3-25"><a href="#cb3-25"></a>                                     <span class="at">decimal.mark =</span> <span class="st">","</span>, </span>
+<span id="cb3-26"><a href="#cb3-26"></a>                                     <span class="at">prefix       =</span> <span class="st">""</span>, </span>
+<span id="cb3-27"><a href="#cb3-27"></a>                                     <span class="at">suffix       =</span> <span class="st">" €"</span>))</span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a>sales_by_year_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sales"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sales_text"],"name":[3],"type":["chr"],"align":["left"]}],"data":[{"1":"2015","2":"9930282","3":"9.930.282 \\200"},{"1":"2016","2":"10730507","3":"10.730.507 \\200"},{"1":"2017","2":"14510291","3":"14.510.291 \\200"},{"1":"2018","2":"12241853","3":"12.241.853 \\200"},{"1":"2019","2":"15017875","3":"15.017.875 \\200"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Step 2: Plot ----</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>sales_by_year_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>  </span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="co"># Canvas</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> sales, <span class="at">color =</span> sales))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Without piping </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> sales_by_year_tbl, </span>
+<span id="cb5-3"><a href="#cb5-3"></a>       <span class="fu">aes</span>(<span class="at">x     =</span> year, </span>
+<span id="cb5-4"><a href="#cb5-4"></a>           <span class="at">y     =</span> sales, </span>
+<span id="cb5-5"><a href="#cb5-5"></a>           <span class="at">color =</span> sales))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>sales_by_year_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="co"># Canvas</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> sales, <span class="at">color =</span> sales)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  </span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="co"># Geometries </span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="ot">-&gt;</span> base_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#&gt; i Please use `linewidth` instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>base_plot <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="co"># not what you want because 2 is not a variable</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="dv">2</span>),</span>
+<span id="cb8-5"><a href="#cb8-5"></a>             </span>
+<span id="cb8-6"><a href="#cb8-6"></a>             <span class="co"># this is fine -- turns all points red</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>             <span class="at">color =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>order_value_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  </span>
+<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">select</span>(order_id, order_line, total_price, quantity) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>  </span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">group_by</span>(order_id) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="at">total_quantity =</span> <span class="fu">sum</span>(quantity),</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="at">total_price    =</span> <span class="fu">sum</span>(total_price)</span>
+<span id="cb11-10"><a href="#cb11-10"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="co"># Scatter Plot</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a>order_value_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>  </span>
+<span id="cb11-16"><a href="#cb11-16"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> total_quantity, <span class="at">y =</span> total_price)) <span class="sc">+</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>  </span>
+<span id="cb11-18"><a href="#cb11-18"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>revenue_by_month_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>  </span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">select</span>(order_date, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>  </span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">mutate</span>(<span class="at">year_month =</span> <span class="fu">floor_date</span>(order_date, <span class="st">"months"</span>) <span class="sc">%&gt;%</span> <span class="fu">ymd</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  </span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">group_by</span>(year_month) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">summarize</span>(<span class="at">revenue =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb13-11"><a href="#cb13-11"></a></span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="co"># Line Plot</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>revenue_by_month_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>  </span>
+<span id="cb13-15"><a href="#cb13-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year_month, revenue)) <span class="sc">+</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a>  </span>
+<span id="cb13-17"><a href="#cb13-17"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">linetype =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">span =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-5.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>revenue_by_category_2_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>  </span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">select</span>(category_2, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  </span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="fu">group_by</span>(category_2) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>  <span class="fu">summarize</span>(<span class="at">revenue =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb15-9"><a href="#cb15-9"></a></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co"># Bar Plot</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>revenue_by_category_2_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>  </span>
+<span id="cb15-13"><a href="#cb15-13"></a>  <span class="fu">mutate</span>(<span class="at">category_2 =</span> category_2 <span class="sc">%&gt;%</span> <span class="fu">as_factor</span>() <span class="sc">%&gt;%</span> <span class="fu">fct_reorder</span>(revenue)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a>  </span>
+<span id="cb15-15"><a href="#cb15-15"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(category_2, revenue)) <span class="sc">+</span></span>
+<span id="cb15-16"><a href="#cb15-16"></a>  </span>
+<span id="cb15-17"><a href="#cb15-17"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2c3e50"</span>) <span class="sc">+</span> </span>
+<span id="cb15-18"><a href="#cb15-18"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-6.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Histogram</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  </span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">distinct</span>(model, price) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a>  </span>
+<span id="cb16-7"><a href="#cb16-7"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(price)) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>  </span>
+<span id="cb16-9"><a href="#cb16-9"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">25</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-7.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Histogram</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>  </span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">distinct</span>(price, model, frame_material) <span class="sc">%&gt;%</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  </span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(price, <span class="at">fill =</span> frame_material)) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>  </span>
+<span id="cb17-8"><a href="#cb17-8"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>  </span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> frame_material, <span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-8.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Density</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  </span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">distinct</span>(price, model, frame_material) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  </span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(price, <span class="at">fill =</span> frame_material)) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7"></a>  </span>
+<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a>  <span class="co"># facet_wrap(~ frame_material, ncol = 1) +</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a>  </span>
+<span id="cb19-11"><a href="#cb19-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-9.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>unit_price_by_cat_2_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  </span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">select</span>(category_2, model, price) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>  </span>
+<span id="cb20-7"><a href="#cb20-7"></a>  <span class="fu">mutate</span>(<span class="at">category_2 =</span> <span class="fu">as_factor</span>(category_2) <span class="sc">%&gt;%</span> <span class="fu">fct_reorder</span>(price))</span>
+<span id="cb20-8"><a href="#cb20-8"></a></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="co"># Box Plot</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>unit_price_by_cat_2_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  </span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(category_2, price)) <span class="sc">+</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>  </span>
+<span id="cb20-14"><a href="#cb20-14"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb20-15"><a href="#cb20-15"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-10.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Violin Plot &amp; Jitter Plot</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>unit_price_by_cat_2_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>  </span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(category_2, price)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>  </span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">color =</span> <span class="st">"#2c3e50"</span>) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  </span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: Groups with fewer than two data points have been dropped.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-11.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-11.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a></span>
+<span id="cb23-3"><a href="#cb23-3"></a>revenue_by_year_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  </span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">select</span>(order_date, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>  </span>
+<span id="cb23-7"><a href="#cb23-7"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(order_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>  </span>
+<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb23-10"><a href="#cb23-10"></a>  <span class="fu">summarize</span>(<span class="at">revenue =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb23-12"><a href="#cb23-12"></a></span>
+<span id="cb23-13"><a href="#cb23-13"></a><span class="co"># Adding text to bar chart</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="co"># Filtering labels to highlight a point</span></span>
+<span id="cb23-15"><a href="#cb23-15"></a></span>
+<span id="cb23-16"><a href="#cb23-16"></a>revenue_by_year_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb23-17"><a href="#cb23-17"></a>  </span>
+<span id="cb23-18"><a href="#cb23-18"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue)) <span class="sc">+</span></span>
+<span id="cb23-19"><a href="#cb23-19"></a>  </span>
+<span id="cb23-20"><a href="#cb23-20"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2c3e50"</span>) <span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb23-22"><a href="#cb23-22"></a>  </span>
+<span id="cb23-23"><a href="#cb23-23"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span>  scales<span class="sc">::</span><span class="fu">dollar</span>(revenue, </span>
+<span id="cb23-24"><a href="#cb23-24"></a>                                        <span class="at">scale  =</span> <span class="fl">1e-6</span>, </span>
+<span id="cb23-25"><a href="#cb23-25"></a>                                        <span class="at">prefix =</span> <span class="st">""</span>,</span>
+<span id="cb23-26"><a href="#cb23-26"></a>                                        <span class="at">suffix =</span> <span class="st">"M"</span>)), </span>
+<span id="cb23-27"><a href="#cb23-27"></a>            <span class="at">vjust =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb23-28"><a href="#cb23-28"></a>  </span>
+<span id="cb23-29"><a href="#cb23-29"></a>  <span class="fu">geom_label</span>(<span class="at">label =</span>  <span class="st">"Major Demand This Year"</span>,</span>
+<span id="cb23-30"><a href="#cb23-30"></a>             <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, </span>
+<span id="cb23-31"><a href="#cb23-31"></a>             <span class="at">size  =</span> <span class="dv">5</span>,</span>
+<span id="cb23-32"><a href="#cb23-32"></a>             <span class="at">fill  =</span> <span class="st">"#1f78b4"</span>,</span>
+<span id="cb23-33"><a href="#cb23-33"></a>             <span class="at">color =</span> <span class="st">"white"</span>,</span>
+<span id="cb23-34"><a href="#cb23-34"></a>             <span class="at">fontface =</span> <span class="st">"italic"</span>,</span>
+<span id="cb23-35"><a href="#cb23-35"></a>             <span class="at">data =</span> revenue_by_year_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb23-36"><a href="#cb23-36"></a>               <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2019</span>))) <span class="sc">+</span> </span>
+<span id="cb23-37"><a href="#cb23-37"></a>  </span>
+<span id="cb23-38"><a href="#cb23-38"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="fl">2e7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-12.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-12.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>sales_by_year_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>  </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="co"># Canvas</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> sales, <span class="at">color =</span> sales)) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>  </span>
+<span id="cb25-6"><a href="#cb25-6"></a>  <span class="co"># Geometries </span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>  </span>
+<span id="cb25-11"><a href="#cb25-11"></a>  <span class="co"># same as above, with explicit scales</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a>  <span class="fu">scale_x_continuous</span>() <span class="sc">+</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a>  <span class="fu">scale_y_continuous</span>() <span class="sc">+</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a>  <span class="fu">scale_colour_continuous</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-13.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-13.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>sales_by_year_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>  </span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="co"># Canvas</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> sales, <span class="at">color =</span> sales)) <span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  </span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="co"># Geometries </span></span>
+<span id="cb28-7"><a href="#cb28-7"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#d62dc6"</span>) <span class="sc">+</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a>  </span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="co"># Formatting</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="co"># You can also type "red", "black" etc. for the colors</span></span>
+<span id="cb28-14"><a href="#cb28-14"></a>  <span class="fu">scale_color_continuous</span>(<span class="at">low    =</span> <span class="st">"#95E1EA"</span>, <span class="at">high =</span> <span class="st">"#2097A3"</span>, </span>
+<span id="cb28-15"><a href="#cb28-15"></a>                         <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale  =</span> <span class="dv">1</span><span class="sc">/</span><span class="fl">1e6</span>, </span>
+<span id="cb28-16"><a href="#cb28-16"></a>                                                        <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb28-17"><a href="#cb28-17"></a>                                                        <span class="at">suffix =</span> <span class="st">"M €"</span>)) <span class="sc">+</span></span>
+<span id="cb28-18"><a href="#cb28-18"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale  =</span> <span class="dv">1</span><span class="sc">/</span><span class="fl">1e6</span>, </span>
+<span id="cb28-19"><a href="#cb28-19"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb28-20"><a href="#cb28-20"></a>                                                    <span class="at">suffix =</span> <span class="st">"M €"</span>)) <span class="sc">+</span></span>
+<span id="cb28-21"><a href="#cb28-21"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-22"><a href="#cb28-22"></a>    <span class="at">title =</span> <span class="st">"Revenue"</span>,</span>
+<span id="cb28-23"><a href="#cb28-23"></a>    <span class="at">subtitle =</span> <span class="st">"Sales are trending up and to the right!"</span>,</span>
+<span id="cb28-24"><a href="#cb28-24"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb28-25"><a href="#cb28-25"></a>    <span class="at">y =</span> <span class="st">"Sales (Millions)"</span>,</span>
+<span id="cb28-26"><a href="#cb28-26"></a>    <span class="at">color =</span> <span class="st">"Rev (M €)"</span>,</span>
+<span id="cb28-27"><a href="#cb28-27"></a>    <span class="at">caption =</span> <span class="st">"What's happening?</span><span class="sc">\n</span><span class="st">Sales numbers showing year-over-year growth."</span></span>
+<span id="cb28-28"><a href="#cb28-28"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-14.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-14.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="do">## DATA PREPARATION</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>sales_by_month_2015 <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  </span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="co"># Selecting columns to focus on and adding a month column</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a>  <span class="fu">select</span>(order_date, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>  <span class="fu">mutate</span>(<span class="at">year  =</span> <span class="fu">year</span>(order_date)) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-8"><a href="#cb30-8"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> <span class="fu">month</span>(order_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-9"><a href="#cb30-9"></a>  </span>
+<span id="cb30-10"><a href="#cb30-10"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="st">"2015"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a>  </span>
+<span id="cb30-12"><a href="#cb30-12"></a>  <span class="co"># Grouping by month, and summarizing sales</span></span>
+<span id="cb30-13"><a href="#cb30-13"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a>  <span class="fu">summarize</span>(<span class="at">sales =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-15"><a href="#cb30-15"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-16"><a href="#cb30-16"></a>  </span>
+<span id="cb30-17"><a href="#cb30-17"></a>  <span class="co"># $ Format Text</span></span>
+<span id="cb30-18"><a href="#cb30-18"></a>  <span class="fu">mutate</span>(<span class="at">sales_text =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(sales, <span class="at">big.mark =</span> <span class="st">"."</span>,</span>
+<span id="cb30-19"><a href="#cb30-19"></a>                                     <span class="at">decimal.mark    =</span> <span class="st">","</span>,</span>
+<span id="cb30-20"><a href="#cb30-20"></a>                                     <span class="at">prefix          =</span> <span class="st">""</span>,  </span>
+<span id="cb30-21"><a href="#cb30-21"></a>                                     <span class="at">suffix          =</span> <span class="st">" €"</span>))</span>
+<span id="cb30-22"><a href="#cb30-22"></a></span>
+<span id="cb30-23"><a href="#cb30-23"></a><span class="do">## PLOTTING</span></span>
+<span id="cb30-24"><a href="#cb30-24"></a><span class="co"># Canvas</span></span>
+<span id="cb30-25"><a href="#cb30-25"></a>sales_by_month_2015 <span class="sc">%&gt;%</span> </span>
+<span id="cb30-26"><a href="#cb30-26"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> sales, <span class="at">color =</span> sales)) <span class="sc">+</span></span>
+<span id="cb30-27"><a href="#cb30-27"></a>  </span>
+<span id="cb30-28"><a href="#cb30-28"></a>  <span class="co"># Geometries </span></span>
+<span id="cb30-29"><a href="#cb30-29"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb30-30"><a href="#cb30-30"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb30-31"><a href="#cb30-31"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb30-32"><a href="#cb30-32"></a>  </span>
+<span id="cb30-33"><a href="#cb30-33"></a>  <span class="co"># Formatting</span></span>
+<span id="cb30-34"><a href="#cb30-34"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb30-35"><a href="#cb30-35"></a>  <span class="fu">scale_color_continuous</span>(<span class="at">low =</span> <span class="st">"red"</span>, <span class="at">high =</span> <span class="st">"black"</span>,</span>
+<span id="cb30-36"><a href="#cb30-36"></a>                         <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="fl">1e6</span>, </span>
+<span id="cb30-37"><a href="#cb30-37"></a>                                                        <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb30-38"><a href="#cb30-38"></a>                                                        <span class="at">suffix =</span> <span class="st">"M €"</span>)) <span class="sc">+</span></span>
+<span id="cb30-39"><a href="#cb30-39"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> sales_by_month_2015<span class="sc">$</span>month, </span>
+<span id="cb30-40"><a href="#cb30-40"></a>                     <span class="at">labels =</span> <span class="fu">month</span>(sales_by_month_2015<span class="sc">$</span>month, <span class="at">label =</span> T)) <span class="sc">+</span></span>
+<span id="cb30-41"><a href="#cb30-41"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="fl">1e6</span>, </span>
+<span id="cb30-42"><a href="#cb30-42"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb30-43"><a href="#cb30-43"></a>                                                    <span class="at">suffix =</span> <span class="st">"M"</span>)) <span class="sc">+</span></span>
+<span id="cb30-44"><a href="#cb30-44"></a>  <span class="fu">labs</span>(</span>
+<span id="cb30-45"><a href="#cb30-45"></a>    <span class="at">title =</span> <span class="st">"Monthly sales (2015)"</span>,</span>
+<span id="cb30-46"><a href="#cb30-46"></a>    <span class="at">subtitle =</span> <span class="st">"April is the strongest month!"</span>,</span>
+<span id="cb30-47"><a href="#cb30-47"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb30-48"><a href="#cb30-48"></a>    <span class="at">y =</span> <span class="st">"Sales (Millions)"</span>,</span>
+<span id="cb30-49"><a href="#cb30-49"></a>    <span class="at">color =</span> <span class="st">"Rev (M €)"</span>,</span>
+<span id="cb30-50"><a href="#cb30-50"></a>    <span class="at">caption =</span> <span class="st">"What's happening?</span><span class="sc">\n</span><span class="st">Sales numbers are dropping towards the end of the year."</span></span>
+<span id="cb30-51"><a href="#cb30-51"></a>  )  <span class="sc">+</span>  </span>
+<span id="cb30-52"><a href="#cb30-52"></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb30-53"><a href="#cb30-53"></a>  <span class="fu">theme</span>(<span class="at">legend.position  =</span> <span class="st">"right"</span>, </span>
+<span id="cb30-54"><a href="#cb30-54"></a>        <span class="at">legend.direction =</span> <span class="st">"vertical"</span>,</span>
+<span id="cb30-55"><a href="#cb30-55"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-15.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-15.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a></span>
+<span id="cb33-3"><a href="#cb33-3"></a>sales_by_year_category_1_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">select</span>(order_date, category_1, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>  </span>
+<span id="cb33-6"><a href="#cb33-6"></a>  <span class="fu">mutate</span>(<span class="at">order_date =</span> <span class="fu">ymd</span>(order_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(order_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>  </span>
+<span id="cb33-9"><a href="#cb33-9"></a>  <span class="fu">group_by</span>(category_1, year) <span class="sc">%&gt;%</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a>  <span class="fu">summarize</span>(<span class="at">revenue =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a>  </span>
+<span id="cb33-13"><a href="#cb33-13"></a>  <span class="co"># Convert character vectors to factors</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a>  <span class="co"># Arrange by year and revenue</span></span>
+<span id="cb33-15"><a href="#cb33-15"></a>  <span class="fu">mutate</span>(<span class="at">category_1 =</span> <span class="fu">fct_reorder2</span>(category_1, year, revenue))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `summarise()` has grouped output by 'category_1'. You can override using the
+#&gt; `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>sales_by_year_category_1_tbl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["category_1"],"name":[1],"type":["fct"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["revenue"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"E-Bikes","2":"2015","3":"1599048"},{"1":"E-Bikes","2":"2016","3":"1916469"},{"1":"E-Bikes","2":"2017","3":"2617352"},{"1":"E-Bikes","2":"2018","3":"2151550"},{"1":"E-Bikes","2":"2019","3":"2667921"},{"1":"Gravel","2":"2015","3":"663025"},{"1":"Gravel","2":"2016","3":"768794"},{"1":"Gravel","2":"2017","3":"1006839"},{"1":"Gravel","2":"2018","3":"792234"},{"1":"Gravel","2":"2019","3":"1169038"},{"1":"Hybrid / City","2":"2015","3":"502512"},{"1":"Hybrid / City","2":"2016","3":"512346"},{"1":"Hybrid / City","2":"2017","3":"784491"},{"1":"Hybrid / City","2":"2018","3":"576805"},{"1":"Hybrid / City","2":"2019","3":"617064"},{"1":"Mountain","2":"2015","3":"3254289"},{"1":"Mountain","2":"2016","3":"3288733"},{"1":"Mountain","2":"2017","3":"4482867"},{"1":"Mountain","2":"2018","3":"4090277"},{"1":"Mountain","2":"2019","3":"4674327"},{"1":"Road","2":"2015","3":"3911408"},{"1":"Road","2":"2016","3":"4244165"},{"1":"Road","2":"2017","3":"5618742"},{"1":"Road","2":"2018","3":"4630987"},{"1":"Road","2":"2019","3":"5889525"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># Uncover the factor levels (just for demonstration)</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="co"># sorted by years and the highest revenues</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">mutate</span>(<span class="at">category_1_num =</span> <span class="fu">as.numeric</span>(category_1)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>  <span class="fu">arrange</span>(category_1_num)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["category_1"],"name":[1],"type":["fct"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["revenue"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["category_1_num"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Road","2":"2015","3":"3911408","4":"1"},{"1":"Road","2":"2016","3":"4244165","4":"1"},{"1":"Road","2":"2017","3":"5618742","4":"1"},{"1":"Road","2":"2018","3":"4630987","4":"1"},{"1":"Road","2":"2019","3":"5889525","4":"1"},{"1":"Mountain","2":"2015","3":"3254289","4":"2"},{"1":"Mountain","2":"2016","3":"3288733","4":"2"},{"1":"Mountain","2":"2017","3":"4482867","4":"2"},{"1":"Mountain","2":"2018","3":"4090277","4":"2"},{"1":"Mountain","2":"2019","3":"4674327","4":"2"},{"1":"E-Bikes","2":"2015","3":"1599048","4":"3"},{"1":"E-Bikes","2":"2016","3":"1916469","4":"3"},{"1":"E-Bikes","2":"2017","3":"2617352","4":"3"},{"1":"E-Bikes","2":"2018","3":"2151550","4":"3"},{"1":"E-Bikes","2":"2019","3":"2667921","4":"3"},{"1":"Gravel","2":"2015","3":"663025","4":"4"},{"1":"Gravel","2":"2016","3":"768794","4":"4"},{"1":"Gravel","2":"2017","3":"1006839","4":"4"},{"1":"Gravel","2":"2018","3":"792234","4":"4"},{"1":"Gravel","2":"2019","3":"1169038","4":"4"},{"1":"Hybrid / City","2":"2015","3":"502512","4":"5"},{"1":"Hybrid / City","2":"2016","3":"512346","4":"5"},{"1":"Hybrid / City","2":"2017","3":"784491","4":"5"},{"1":"Hybrid / City","2":"2018","3":"576805","4":"5"},{"1":"Hybrid / City","2":"2019","3":"617064","4":"5"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Named Colors. This returns a long list of colors that can be used by name</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">colors</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;   [1] "white"                "aliceblue"            "antiquewhite"        
+#&gt;   [4] "antiquewhite1"        "antiquewhite2"        "antiquewhite3"       
+#&gt;   [7] "antiquewhite4"        "aquamarine"           "aquamarine1"         
+#&gt;  [10] "aquamarine2"          "aquamarine3"          "aquamarine4"         
+#&gt;  [13] "azure"                "azure1"               "azure2"              
+#&gt;  [16] "azure3"               "azure4"               "beige"               
+#&gt;  [19] "bisque"               "bisque1"              "bisque2"             
+#&gt;  [22] "bisque3"              "bisque4"              "black"               
+#&gt;  [25] "blanchedalmond"       "blue"                 "blue1"               
+#&gt;  [28] "blue2"                "blue3"                "blue4"               
+#&gt;  [31] "blueviolet"           "brown"                "brown1"              
+#&gt;  [34] "brown2"               "brown3"               "brown4"              
+#&gt;  [37] "burlywood"            "burlywood1"           "burlywood2"          
+#&gt;  [40] "burlywood3"           "burlywood4"           "cadetblue"           
+#&gt;  [43] "cadetblue1"           "cadetblue2"           "cadetblue3"          
+#&gt;  [46] "cadetblue4"           "chartreuse"           "chartreuse1"         
+#&gt;  [49] "chartreuse2"          "chartreuse3"          "chartreuse4"         
+#&gt;  [52] "chocolate"            "chocolate1"           "chocolate2"          
+#&gt;  [55] "chocolate3"           "chocolate4"           "coral"               
+#&gt;  [58] "coral1"               "coral2"               "coral3"              
+#&gt;  [61] "coral4"               "cornflowerblue"       "cornsilk"            
+#&gt;  [64] "cornsilk1"            "cornsilk2"            "cornsilk3"           
+#&gt;  [67] "cornsilk4"            "cyan"                 "cyan1"               
+#&gt;  [70] "cyan2"                "cyan3"                "cyan4"               
+#&gt;  [73] "darkblue"             "darkcyan"             "darkgoldenrod"       
+#&gt;  [76] "darkgoldenrod1"       "darkgoldenrod2"       "darkgoldenrod3"      
+#&gt;  [79] "darkgoldenrod4"       "darkgray"             "darkgreen"           
+#&gt;  [82] "darkgrey"             "darkkhaki"            "darkmagenta"         
+#&gt;  [85] "darkolivegreen"       "darkolivegreen1"      "darkolivegreen2"     
+#&gt;  [88] "darkolivegreen3"      "darkolivegreen4"      "darkorange"          
+#&gt;  [91] "darkorange1"          "darkorange2"          "darkorange3"         
+#&gt;  [94] "darkorange4"          "darkorchid"           "darkorchid1"         
+#&gt;  [97] "darkorchid2"          "darkorchid3"          "darkorchid4"         
+#&gt; [100] "darkred"              "darksalmon"           "darkseagreen"        
+#&gt; [103] "darkseagreen1"        "darkseagreen2"        "darkseagreen3"       
+#&gt; [106] "darkseagreen4"        "darkslateblue"        "darkslategray"       
+#&gt; [109] "darkslategray1"       "darkslategray2"       "darkslategray3"      
+#&gt; [112] "darkslategray4"       "darkslategrey"        "darkturquoise"       
+#&gt; [115] "darkviolet"           "deeppink"             "deeppink1"           
+#&gt; [118] "deeppink2"            "deeppink3"            "deeppink4"           
+#&gt; [121] "deepskyblue"          "deepskyblue1"         "deepskyblue2"        
+#&gt; [124] "deepskyblue3"         "deepskyblue4"         "dimgray"             
+#&gt; [127] "dimgrey"              "dodgerblue"           "dodgerblue1"         
+#&gt; [130] "dodgerblue2"          "dodgerblue3"          "dodgerblue4"         
+#&gt; [133] "firebrick"            "firebrick1"           "firebrick2"          
+#&gt; [136] "firebrick3"           "firebrick4"           "floralwhite"         
+#&gt; [139] "forestgreen"          "gainsboro"            "ghostwhite"          
+#&gt; [142] "gold"                 "gold1"                "gold2"               
+#&gt; [145] "gold3"                "gold4"                "goldenrod"           
+#&gt; [148] "goldenrod1"           "goldenrod2"           "goldenrod3"          
+#&gt; [151] "goldenrod4"           "gray"                 "gray0"               
+#&gt; [154] "gray1"                "gray2"                "gray3"               
+#&gt; [157] "gray4"                "gray5"                "gray6"               
+#&gt; [160] "gray7"                "gray8"                "gray9"               
+#&gt; [163] "gray10"               "gray11"               "gray12"              
+#&gt; [166] "gray13"               "gray14"               "gray15"              
+#&gt; [169] "gray16"               "gray17"               "gray18"              
+#&gt; [172] "gray19"               "gray20"               "gray21"              
+#&gt; [175] "gray22"               "gray23"               "gray24"              
+#&gt; [178] "gray25"               "gray26"               "gray27"              
+#&gt; [181] "gray28"               "gray29"               "gray30"              
+#&gt; [184] "gray31"               "gray32"               "gray33"              
+#&gt; [187] "gray34"               "gray35"               "gray36"              
+#&gt; [190] "gray37"               "gray38"               "gray39"              
+#&gt; [193] "gray40"               "gray41"               "gray42"              
+#&gt; [196] "gray43"               "gray44"               "gray45"              
+#&gt; [199] "gray46"               "gray47"               "gray48"              
+#&gt; [202] "gray49"               "gray50"               "gray51"              
+#&gt; [205] "gray52"               "gray53"               "gray54"              
+#&gt; [208] "gray55"               "gray56"               "gray57"              
+#&gt; [211] "gray58"               "gray59"               "gray60"              
+#&gt; [214] "gray61"               "gray62"               "gray63"              
+#&gt; [217] "gray64"               "gray65"               "gray66"              
+#&gt; [220] "gray67"               "gray68"               "gray69"              
+#&gt; [223] "gray70"               "gray71"               "gray72"              
+#&gt; [226] "gray73"               "gray74"               "gray75"              
+#&gt; [229] "gray76"               "gray77"               "gray78"              
+#&gt; [232] "gray79"               "gray80"               "gray81"              
+#&gt; [235] "gray82"               "gray83"               "gray84"              
+#&gt; [238] "gray85"               "gray86"               "gray87"              
+#&gt; [241] "gray88"               "gray89"               "gray90"              
+#&gt; [244] "gray91"               "gray92"               "gray93"              
+#&gt; [247] "gray94"               "gray95"               "gray96"              
+#&gt; [250] "gray97"               "gray98"               "gray99"              
+#&gt; [253] "gray100"              "green"                "green1"              
+#&gt; [256] "green2"               "green3"               "green4"              
+#&gt; [259] "greenyellow"          "grey"                 "grey0"               
+#&gt; [262] "grey1"                "grey2"                "grey3"               
+#&gt; [265] "grey4"                "grey5"                "grey6"               
+#&gt; [268] "grey7"                "grey8"                "grey9"               
+#&gt; [271] "grey10"               "grey11"               "grey12"              
+#&gt; [274] "grey13"               "grey14"               "grey15"              
+#&gt; [277] "grey16"               "grey17"               "grey18"              
+#&gt; [280] "grey19"               "grey20"               "grey21"              
+#&gt; [283] "grey22"               "grey23"               "grey24"              
+#&gt; [286] "grey25"               "grey26"               "grey27"              
+#&gt; [289] "grey28"               "grey29"               "grey30"              
+#&gt; [292] "grey31"               "grey32"               "grey33"              
+#&gt; [295] "grey34"               "grey35"               "grey36"              
+#&gt; [298] "grey37"               "grey38"               "grey39"              
+#&gt; [301] "grey40"               "grey41"               "grey42"              
+#&gt; [304] "grey43"               "grey44"               "grey45"              
+#&gt; [307] "grey46"               "grey47"               "grey48"              
+#&gt; [310] "grey49"               "grey50"               "grey51"              
+#&gt; [313] "grey52"               "grey53"               "grey54"              
+#&gt; [316] "grey55"               "grey56"               "grey57"              
+#&gt; [319] "grey58"               "grey59"               "grey60"              
+#&gt; [322] "grey61"               "grey62"               "grey63"              
+#&gt; [325] "grey64"               "grey65"               "grey66"              
+#&gt; [328] "grey67"               "grey68"               "grey69"              
+#&gt; [331] "grey70"               "grey71"               "grey72"              
+#&gt; [334] "grey73"               "grey74"               "grey75"              
+#&gt; [337] "grey76"               "grey77"               "grey78"              
+#&gt; [340] "grey79"               "grey80"               "grey81"              
+#&gt; [343] "grey82"               "grey83"               "grey84"              
+#&gt; [346] "grey85"               "grey86"               "grey87"              
+#&gt; [349] "grey88"               "grey89"               "grey90"              
+#&gt; [352] "grey91"               "grey92"               "grey93"              
+#&gt; [355] "grey94"               "grey95"               "grey96"              
+#&gt; [358] "grey97"               "grey98"               "grey99"              
+#&gt; [361] "grey100"              "honeydew"             "honeydew1"           
+#&gt; [364] "honeydew2"            "honeydew3"            "honeydew4"           
+#&gt; [367] "hotpink"              "hotpink1"             "hotpink2"            
+#&gt; [370] "hotpink3"             "hotpink4"             "indianred"           
+#&gt; [373] "indianred1"           "indianred2"           "indianred3"          
+#&gt; [376] "indianred4"           "ivory"                "ivory1"              
+#&gt; [379] "ivory2"               "ivory3"               "ivory4"              
+#&gt; [382] "khaki"                "khaki1"               "khaki2"              
+#&gt; [385] "khaki3"               "khaki4"               "lavender"            
+#&gt; [388] "lavenderblush"        "lavenderblush1"       "lavenderblush2"      
+#&gt; [391] "lavenderblush3"       "lavenderblush4"       "lawngreen"           
+#&gt; [394] "lemonchiffon"         "lemonchiffon1"        "lemonchiffon2"       
+#&gt; [397] "lemonchiffon3"        "lemonchiffon4"        "lightblue"           
+#&gt; [400] "lightblue1"           "lightblue2"           "lightblue3"          
+#&gt; [403] "lightblue4"           "lightcoral"           "lightcyan"           
+#&gt; [406] "lightcyan1"           "lightcyan2"           "lightcyan3"          
+#&gt; [409] "lightcyan4"           "lightgoldenrod"       "lightgoldenrod1"     
+#&gt; [412] "lightgoldenrod2"      "lightgoldenrod3"      "lightgoldenrod4"     
+#&gt; [415] "lightgoldenrodyellow" "lightgray"            "lightgreen"          
+#&gt; [418] "lightgrey"            "lightpink"            "lightpink1"          
+#&gt; [421] "lightpink2"           "lightpink3"           "lightpink4"          
+#&gt; [424] "lightsalmon"          "lightsalmon1"         "lightsalmon2"        
+#&gt; [427] "lightsalmon3"         "lightsalmon4"         "lightseagreen"       
+#&gt; [430] "lightskyblue"         "lightskyblue1"        "lightskyblue2"       
+#&gt; [433] "lightskyblue3"        "lightskyblue4"        "lightslateblue"      
+#&gt; [436] "lightslategray"       "lightslategrey"       "lightsteelblue"      
+#&gt; [439] "lightsteelblue1"      "lightsteelblue2"      "lightsteelblue3"     
+#&gt; [442] "lightsteelblue4"      "lightyellow"          "lightyellow1"        
+#&gt; [445] "lightyellow2"         "lightyellow3"         "lightyellow4"        
+#&gt; [448] "limegreen"            "linen"                "magenta"             
+#&gt; [451] "magenta1"             "magenta2"             "magenta3"            
+#&gt; [454] "magenta4"             "maroon"               "maroon1"             
+#&gt; [457] "maroon2"              "maroon3"              "maroon4"             
+#&gt; [460] "mediumaquamarine"     "mediumblue"           "mediumorchid"        
+#&gt; [463] "mediumorchid1"        "mediumorchid2"        "mediumorchid3"       
+#&gt; [466] "mediumorchid4"        "mediumpurple"         "mediumpurple1"       
+#&gt; [469] "mediumpurple2"        "mediumpurple3"        "mediumpurple4"       
+#&gt; [472] "mediumseagreen"       "mediumslateblue"      "mediumspringgreen"   
+#&gt; [475] "mediumturquoise"      "mediumvioletred"      "midnightblue"        
+#&gt; [478] "mintcream"            "mistyrose"            "mistyrose1"          
+#&gt; [481] "mistyrose2"           "mistyrose3"           "mistyrose4"          
+#&gt; [484] "moccasin"             "navajowhite"          "navajowhite1"        
+#&gt; [487] "navajowhite2"         "navajowhite3"         "navajowhite4"        
+#&gt; [490] "navy"                 "navyblue"             "oldlace"             
+#&gt; [493] "olivedrab"            "olivedrab1"           "olivedrab2"          
+#&gt; [496] "olivedrab3"           "olivedrab4"           "orange"              
+#&gt; [499] "orange1"              "orange2"              "orange3"             
+#&gt; [502] "orange4"              "orangered"            "orangered1"          
+#&gt; [505] "orangered2"           "orangered3"           "orangered4"          
+#&gt; [508] "orchid"               "orchid1"              "orchid2"             
+#&gt; [511] "orchid3"              "orchid4"              "palegoldenrod"       
+#&gt; [514] "palegreen"            "palegreen1"           "palegreen2"          
+#&gt; [517] "palegreen3"           "palegreen4"           "paleturquoise"       
+#&gt; [520] "paleturquoise1"       "paleturquoise2"       "paleturquoise3"      
+#&gt; [523] "paleturquoise4"       "palevioletred"        "palevioletred1"      
+#&gt; [526] "palevioletred2"       "palevioletred3"       "palevioletred4"      
+#&gt; [529] "papayawhip"           "peachpuff"            "peachpuff1"          
+#&gt; [532] "peachpuff2"           "peachpuff3"           "peachpuff4"          
+#&gt; [535] "peru"                 "pink"                 "pink1"               
+#&gt; [538] "pink2"                "pink3"                "pink4"               
+#&gt; [541] "plum"                 "plum1"                "plum2"               
+#&gt; [544] "plum3"                "plum4"                "powderblue"          
+#&gt; [547] "purple"               "purple1"              "purple2"             
+#&gt; [550] "purple3"              "purple4"              "red"                 
+#&gt; [553] "red1"                 "red2"                 "red3"                
+#&gt; [556] "red4"                 "rosybrown"            "rosybrown1"          
+#&gt; [559] "rosybrown2"           "rosybrown3"           "rosybrown4"          
+#&gt; [562] "royalblue"            "royalblue1"           "royalblue2"          
+#&gt; [565] "royalblue3"           "royalblue4"           "saddlebrown"         
+#&gt; [568] "salmon"               "salmon1"              "salmon2"             
+#&gt; [571] "salmon3"              "salmon4"              "sandybrown"          
+#&gt; [574] "seagreen"             "seagreen1"            "seagreen2"           
+#&gt; [577] "seagreen3"            "seagreen4"            "seashell"            
+#&gt; [580] "seashell1"            "seashell2"            "seashell3"           
+#&gt; [583] "seashell4"            "sienna"               "sienna1"             
+#&gt; [586] "sienna2"              "sienna3"              "sienna4"             
+#&gt; [589] "skyblue"              "skyblue1"             "skyblue2"            
+#&gt; [592] "skyblue3"             "skyblue4"             "slateblue"           
+#&gt; [595] "slateblue1"           "slateblue2"           "slateblue3"          
+#&gt; [598] "slateblue4"           "slategray"            "slategray1"          
+#&gt; [601] "slategray2"           "slategray3"           "slategray4"          
+#&gt; [604] "slategrey"            "snow"                 "snow1"               
+#&gt; [607] "snow2"                "snow3"                "snow4"               
+#&gt; [610] "springgreen"          "springgreen1"         "springgreen2"        
+#&gt; [613] "springgreen3"         "springgreen4"         "steelblue"           
+#&gt; [616] "steelblue1"           "steelblue2"           "steelblue3"          
+#&gt; [619] "steelblue4"           "tan"                  "tan1"                
+#&gt; [622] "tan2"                 "tan3"                 "tan4"                
+#&gt; [625] "thistle"              "thistle1"             "thistle2"            
+#&gt; [628] "thistle3"             "thistle4"             "tomato"              
+#&gt; [631] "tomato1"              "tomato2"              "tomato3"             
+#&gt; [634] "tomato4"              "turquoise"            "turquoise1"          
+#&gt; [637] "turquoise2"           "turquoise3"           "turquoise4"          
+#&gt; [640] "violet"               "violetred"            "violetred1"          
+#&gt; [643] "violetred2"           "violetred3"           "violetred4"          
+#&gt; [646] "wheat"                "wheat1"               "wheat2"              
+#&gt; [649] "wheat3"               "wheat4"               "whitesmoke"          
+#&gt; [652] "yellow"               "yellow1"              "yellow2"             
+#&gt; [655] "yellow3"              "yellow4"              "yellowgreen"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Example</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>  </span>
+<span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue)) <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  </span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"slateblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-16.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-16.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># To RGB</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">col2rgb</span>(<span class="st">"slateblue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       [,1]
+#&gt; red    106
+#&gt; green   90
+#&gt; blue   205</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">col2rgb</span>(<span class="st">"#2C3E50"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       [,1]
+#&gt; red     44
+#&gt; green   62
+#&gt; blue    80</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># To HEX (this function should be provided to a geom)</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">rgb</span>(<span class="dv">44</span>, <span class="dv">62</span>, <span class="dv">80</span>, <span class="at">maxColorValue =</span> <span class="dv">255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "#2C3E50"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="do">### Brewer. Comes with basic R.</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="co">#Primarly for discrete data.</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a></span>
+<span id="cb46-4"><a href="#cb46-4"></a><span class="co"># We can use those palletes by just calling their names (e.g. "Blues")</span></span>
+<span id="cb46-5"><a href="#cb46-5"></a><span class="co"># Display the colors</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-17.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-17.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Get information</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>RColorBrewer<span class="sc">::</span>brewer.pal.info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["maxcolors"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["category"],"name":[2],"type":["chr"],"align":["left"]},{"label":["colorblind"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"11","2":"div","3":"TRUE","_rn_":"BrBG"},{"1":"11","2":"div","3":"TRUE","_rn_":"PiYG"},{"1":"11","2":"div","3":"TRUE","_rn_":"PRGn"},{"1":"11","2":"div","3":"TRUE","_rn_":"PuOr"},{"1":"11","2":"div","3":"TRUE","_rn_":"RdBu"},{"1":"11","2":"div","3":"FALSE","_rn_":"RdGy"},{"1":"11","2":"div","3":"TRUE","_rn_":"RdYlBu"},{"1":"11","2":"div","3":"FALSE","_rn_":"RdYlGn"},{"1":"11","2":"div","3":"FALSE","_rn_":"Spectral"},{"1":"8","2":"qual","3":"FALSE","_rn_":"Accent"},{"1":"8","2":"qual","3":"TRUE","_rn_":"Dark2"},{"1":"12","2":"qual","3":"TRUE","_rn_":"Paired"},{"1":"9","2":"qual","3":"FALSE","_rn_":"Pastel1"},{"1":"8","2":"qual","3":"FALSE","_rn_":"Pastel2"},{"1":"9","2":"qual","3":"FALSE","_rn_":"Set1"},{"1":"8","2":"qual","3":"TRUE","_rn_":"Set2"},{"1":"12","2":"qual","3":"FALSE","_rn_":"Set3"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Blues"},{"1":"9","2":"seq","3":"TRUE","_rn_":"BuGn"},{"1":"9","2":"seq","3":"TRUE","_rn_":"BuPu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"GnBu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Greens"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Greys"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Oranges"},{"1":"9","2":"seq","3":"TRUE","_rn_":"OrRd"},{"1":"9","2":"seq","3":"TRUE","_rn_":"PuBu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"PuBuGn"},{"1":"9","2":"seq","3":"TRUE","_rn_":"PuRd"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Purples"},{"1":"9","2":"seq","3":"TRUE","_rn_":"RdPu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Reds"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlGn"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlGnBu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlOrBr"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlOrRd"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Get the HEX codes</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">name =</span> <span class="st">"Blues"</span>)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "#F7FBFF"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># Example</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a>  </span>
+<span id="cb50-4"><a href="#cb50-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue)) <span class="sc">+</span></span>
+<span id="cb50-5"><a href="#cb50-5"></a>  </span>
+<span id="cb50-6"><a href="#cb50-6"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">name =</span> <span class="st">"Blues"</span>)[<span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-18.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-18.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="do">### Viridis</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a>viridisLite<span class="sc">::</span><span class="fu">viridis</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;  [1] "#440154FF" "#481568FF" "#482677FF" "#453781FF" "#3F4788FF" "#39558CFF"
+#&gt;  [7] "#32648EFF" "#2D718EFF" "#287D8EFF" "#238A8DFF" "#1F968BFF" "#20A386FF"
+#&gt; [13] "#29AF7FFF" "#3CBC75FF" "#56C667FF" "#74D055FF" "#94D840FF" "#B8DE29FF"
+#&gt; [19] "#DCE318FF" "#FDE725FF"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># The last two characters indicate the transparency (e.g. FF makes it 100% transparent)</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="co"># Example</span></span>
+<span id="cb53-4"><a href="#cb53-4"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb53-5"><a href="#cb53-5"></a>  </span>
+<span id="cb53-6"><a href="#cb53-6"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue)) <span class="sc">+</span></span>
+<span id="cb53-7"><a href="#cb53-7"></a>  </span>
+<span id="cb53-8"><a href="#cb53-8"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> viridisLite<span class="sc">::</span><span class="fu">viridis</span>(<span class="at">n =</span> <span class="dv">20</span>)[<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-19.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-19.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>  </span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="co"># Put the aes color mapping here, to apply it to geom_line and geom_point</span></span>
+<span id="cb54-4"><a href="#cb54-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">color =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb54-5"><a href="#cb54-5"></a>  </span>
+<span id="cb54-6"><a href="#cb54-6"></a>  <span class="co"># Or you could do it locally in each geom </span></span>
+<span id="cb54-7"><a href="#cb54-7"></a>  <span class="co"># (aes mapping only necessary if you map it to a column)</span></span>
+<span id="cb54-8"><a href="#cb54-8"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="co"># geom_line(aes(color = category_1))</span></span>
+<span id="cb54-9"><a href="#cb54-9"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"dodgerblue"</span>, <span class="at">size =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-20.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-20.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a>  </span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue)) <span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> category_1)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-21.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># You could use color = ... to color the outlines</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a></span>
+<span id="cb56-3"><a href="#cb56-3"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb56-4"><a href="#cb56-4"></a>  </span>
+<span id="cb56-5"><a href="#cb56-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">size =</span> revenue)) <span class="sc">+</span></span>
+<span id="cb56-6"><a href="#cb56-6"></a>  </span>
+<span id="cb56-7"><a href="#cb56-7"></a>  <span class="co"># The local size overrides the global size</span></span>
+<span id="cb56-8"><a href="#cb56-8"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> category_1), <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb56-9"><a href="#cb56-9"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-22.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a>  </span>
+<span id="cb57-3"><a href="#cb57-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">color =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb57-5"><a href="#cb57-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb57-6"><a href="#cb57-6"></a>  </span>
+<span id="cb57-7"><a href="#cb57-7"></a>  <span class="co"># Break out stacked plot</span></span>
+<span id="cb57-8"><a href="#cb57-8"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> category_1, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb57-9"><a href="#cb57-9"></a>  </span>
+<span id="cb57-10"><a href="#cb57-10"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-23.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-23.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a>  </span>
+<span id="cb59-3"><a href="#cb59-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">fill =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="co"># geom_col(position = "stack") # default</span></span>
+<span id="cb59-5"><a href="#cb59-5"></a>  <span class="co"># geom_col(position = "dodge")</span></span>
+<span id="cb59-6"><a href="#cb59-6"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>), <span class="at">color =</span> <span class="st">"white"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-24.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-24.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># Stacked Area</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a></span>
+<span id="cb60-3"><a href="#cb60-3"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb60-4"><a href="#cb60-4"></a>  </span>
+<span id="cb60-5"><a href="#cb60-5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">fill =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb60-6"><a href="#cb60-6"></a>  <span class="fu">geom_area</span>(<span class="at">color =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-25.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-25.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>g_facet_continuous <span class="ot">&lt;-</span> sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>  </span>
+<span id="cb61-3"><a href="#cb61-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">color =</span> revenue)) <span class="sc">+</span></span>
+<span id="cb61-4"><a href="#cb61-4"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb61-5"><a href="#cb61-5"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb61-6"><a href="#cb61-6"></a>  </span>
+<span id="cb61-7"><a href="#cb61-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> category_1, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb61-8"><a href="#cb61-8"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb61-9"><a href="#cb61-9"></a>  </span>
+<span id="cb61-10"><a href="#cb61-10"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb61-11"><a href="#cb61-11"></a></span>
+<span id="cb61-12"><a href="#cb61-12"></a>g_facet_continuous</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-26.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a>g_facet_discrete <span class="ot">&lt;-</span> sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>  </span>
+<span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">color =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb62-4"><a href="#cb62-4"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb62-5"><a href="#cb62-5"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb62-6"><a href="#cb62-6"></a>  </span>
+<span id="cb62-7"><a href="#cb62-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> category_1, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb62-8"><a href="#cb62-8"></a>  <span class="fu">expand_limits</span>(<span class="at">y =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb62-9"><a href="#cb62-9"></a>  </span>
+<span id="cb62-10"><a href="#cb62-10"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb62-11"><a href="#cb62-11"></a></span>
+<span id="cb62-12"><a href="#cb62-12"></a>g_facet_discrete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-27.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-27.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>g_area_discrete <span class="ot">&lt;-</span> sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>  </span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">fill =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a>  <span class="fu">geom_area</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb63-5"><a href="#cb63-5"></a>  </span>
+<span id="cb63-6"><a href="#cb63-6"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb63-7"><a href="#cb63-7"></a></span>
+<span id="cb63-8"><a href="#cb63-8"></a>g_area_discrete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-28.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-28.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>g_area_discrete <span class="ot">&lt;-</span> sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>  </span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">fill =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb64-4"><a href="#cb64-4"></a>  <span class="fu">geom_area</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb64-5"><a href="#cb64-5"></a>  </span>
+<span id="cb64-6"><a href="#cb64-6"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb64-7"><a href="#cb64-7"></a></span>
+<span id="cb64-8"><a href="#cb64-8"></a>g_area_discrete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-29.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-29.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">display.brewer.all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-30.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-30.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>RColorBrewer<span class="sc">::</span>brewer.pal.info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["maxcolors"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["category"],"name":[2],"type":["chr"],"align":["left"]},{"label":["colorblind"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"11","2":"div","3":"TRUE","_rn_":"BrBG"},{"1":"11","2":"div","3":"TRUE","_rn_":"PiYG"},{"1":"11","2":"div","3":"TRUE","_rn_":"PRGn"},{"1":"11","2":"div","3":"TRUE","_rn_":"PuOr"},{"1":"11","2":"div","3":"TRUE","_rn_":"RdBu"},{"1":"11","2":"div","3":"FALSE","_rn_":"RdGy"},{"1":"11","2":"div","3":"TRUE","_rn_":"RdYlBu"},{"1":"11","2":"div","3":"FALSE","_rn_":"RdYlGn"},{"1":"11","2":"div","3":"FALSE","_rn_":"Spectral"},{"1":"8","2":"qual","3":"FALSE","_rn_":"Accent"},{"1":"8","2":"qual","3":"TRUE","_rn_":"Dark2"},{"1":"12","2":"qual","3":"TRUE","_rn_":"Paired"},{"1":"9","2":"qual","3":"FALSE","_rn_":"Pastel1"},{"1":"8","2":"qual","3":"FALSE","_rn_":"Pastel2"},{"1":"9","2":"qual","3":"FALSE","_rn_":"Set1"},{"1":"8","2":"qual","3":"TRUE","_rn_":"Set2"},{"1":"12","2":"qual","3":"FALSE","_rn_":"Set3"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Blues"},{"1":"9","2":"seq","3":"TRUE","_rn_":"BuGn"},{"1":"9","2":"seq","3":"TRUE","_rn_":"BuPu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"GnBu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Greens"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Greys"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Oranges"},{"1":"9","2":"seq","3":"TRUE","_rn_":"OrRd"},{"1":"9","2":"seq","3":"TRUE","_rn_":"PuBu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"PuBuGn"},{"1":"9","2":"seq","3":"TRUE","_rn_":"PuRd"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Purples"},{"1":"9","2":"seq","3":"TRUE","_rn_":"RdPu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"Reds"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlGn"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlGnBu"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlOrBr"},{"1":"9","2":"seq","3":"TRUE","_rn_":"YlOrRd"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a>RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">8</span>, <span class="at">name =</span> <span class="st">"Blues"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "#F7FBFF" "#DEEBF7" "#C6DBEF" "#9ECAE1" "#6BAED6" "#4292C6" "#2171B5"
+#&gt; [8] "#084594"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>g_facet_discrete <span class="sc">+</span></span>
+<span id="cb69-2"><a href="#cb69-2"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set3"</span>) <span class="sc">+</span></span>
+<span id="cb69-3"><a href="#cb69-3"></a>  <span class="fu">theme_dark</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-31.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-31.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>g_facet_discrete <span class="sc">+</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">"D"</span>) <span class="sc">+</span></span>
+<span id="cb70-3"><a href="#cb70-3"></a>  <span class="fu">theme_dark</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-32.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-32.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>g_area_discrete <span class="sc">+</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-33.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-33.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>g_area_discrete <span class="sc">+</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a>  <span class="fu">scale_fill_viridis_d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-34.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-34.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>g_facet_continuous <span class="sc">+</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2015</span>, <span class="dv">2019</span>, <span class="at">by =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, </span>
+<span id="cb73-4"><a href="#cb73-4"></a>                                                    <span class="at">preix =</span> <span class="st">""</span>,</span>
+<span id="cb73-5"><a href="#cb73-5"></a>                                                    <span class="at">suffix =</span> <span class="st">"M"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-35.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-35.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a>g_facet_continuous <span class="sc">+</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a>  </span>
+<span id="cb74-3"><a href="#cb74-3"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2011</span>, <span class="dv">2015</span>, <span class="at">by =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb74-4"><a href="#cb74-4"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, </span>
+<span id="cb74-5"><a href="#cb74-5"></a>                                                    <span class="at">suffix =</span> <span class="st">"M"</span>)) <span class="sc">+</span></span>
+<span id="cb74-6"><a href="#cb74-6"></a>  </span>
+<span id="cb74-7"><a href="#cb74-7"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb74-8"><a href="#cb74-8"></a>  </span>
+<span id="cb74-9"><a href="#cb74-9"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb74-10"><a href="#cb74-10"></a>  <span class="fu">theme_dark</span>() <span class="sc">+</span></span>
+<span id="cb74-11"><a href="#cb74-11"></a>  </span>
+<span id="cb74-12"><a href="#cb74-12"></a>  <span class="fu">labs</span>(</span>
+<span id="cb74-13"><a href="#cb74-13"></a>    <span class="at">title =</span> <span class="st">"Bike Sales"</span>,</span>
+<span id="cb74-14"><a href="#cb74-14"></a>    <span class="at">subtitle =</span> <span class="st">"Sales are trending up"</span>,</span>
+<span id="cb74-15"><a href="#cb74-15"></a>    <span class="at">caption =</span> <span class="st">"5-year sales trends</span><span class="sc">\n</span><span class="st">comes from our ERP Database"</span>,</span>
+<span id="cb74-16"><a href="#cb74-16"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb74-17"><a href="#cb74-17"></a>    <span class="at">y =</span> <span class="st">"Revenue (M €)"</span>,</span>
+<span id="cb74-18"><a href="#cb74-18"></a>    <span class="at">color =</span> <span class="st">"Revenue"</span> <span class="co"># Legend text</span></span>
+<span id="cb74-19"><a href="#cb74-19"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?
+#&gt; The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?
+#&gt; The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?
+#&gt; The following aesthetics were dropped during statistical transformation: colour
+#&gt; i This can happen when ggplot fails to infer the correct grouping structure in
+#&gt;   the data.
+#&gt; i Did you forget to specify a `group` aesthetic or to convert a numerical
+#&gt;   variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-36.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-36.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>g_facet_continuous <span class="sc">+</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a>  </span>
+<span id="cb78-3"><a href="#cb78-3"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb78-4"><a href="#cb78-4"></a>  </span>
+<span id="cb78-5"><a href="#cb78-5"></a>  <span class="fu">theme</span>(</span>
+<span id="cb78-6"><a href="#cb78-6"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb78-7"><a href="#cb78-7"></a>      <span class="at">angle =</span> <span class="dv">45</span>,</span>
+<span id="cb78-8"><a href="#cb78-8"></a>      <span class="at">hjust =</span> <span class="dv">1</span></span>
+<span id="cb78-9"><a href="#cb78-9"></a>    ),</span>
+<span id="cb78-10"><a href="#cb78-10"></a>    <span class="at">strip.background =</span> <span class="fu">element_rect</span>(</span>
+<span id="cb78-11"><a href="#cb78-11"></a>      <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb78-12"><a href="#cb78-12"></a>      <span class="at">fill  =</span> <span class="st">"cornflowerblue"</span>,</span>
+<span id="cb78-13"><a href="#cb78-13"></a>      <span class="at">size  =</span> <span class="dv">1</span></span>
+<span id="cb78-14"><a href="#cb78-14"></a>    ),</span>
+<span id="cb78-15"><a href="#cb78-15"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(</span>
+<span id="cb78-16"><a href="#cb78-16"></a>      <span class="at">face  =</span> <span class="st">"bold"</span>,</span>
+<span id="cb78-17"><a href="#cb78-17"></a>      <span class="at">color =</span> <span class="st">"white"</span></span>
+<span id="cb78-18"><a href="#cb78-18"></a>    )</span>
+<span id="cb78-19"><a href="#cb78-19"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+#&gt; i Please use the `linewidth` argument instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-37.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-37.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>sales_by_year_category_1_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a>  </span>
+<span id="cb80-3"><a href="#cb80-3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, revenue, <span class="at">fill =</span> category_1)) <span class="sc">+</span></span>
+<span id="cb80-4"><a href="#cb80-4"></a>  </span>
+<span id="cb80-5"><a href="#cb80-5"></a>  <span class="fu">geom_area</span>(<span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb80-6"><a href="#cb80-6"></a>  </span>
+<span id="cb80-7"><a href="#cb80-7"></a>  <span class="co"># Scales</span></span>
+<span id="cb80-8"><a href="#cb80-8"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb80-9"><a href="#cb80-9"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">""</span>, <span class="at">suffix =</span> <span class="st">" €"</span>)) <span class="sc">+</span></span>
+<span id="cb80-10"><a href="#cb80-10"></a>  </span>
+<span id="cb80-11"><a href="#cb80-11"></a>  <span class="co"># Labels</span></span>
+<span id="cb80-12"><a href="#cb80-12"></a>  <span class="fu">labs</span>(</span>
+<span id="cb80-13"><a href="#cb80-13"></a>    <span class="at">title =</span> <span class="st">"Sales Over Year by Category 1"</span>,</span>
+<span id="cb80-14"><a href="#cb80-14"></a>    <span class="at">subtitle =</span> <span class="st">"Sales Trending Upward"</span>,</span>
+<span id="cb80-15"><a href="#cb80-15"></a>    <span class="at">x =</span> <span class="st">""</span>,</span>
+<span id="cb80-16"><a href="#cb80-16"></a>    <span class="at">y =</span> <span class="st">"Revenue (M €)"</span>,</span>
+<span id="cb80-17"><a href="#cb80-17"></a>    <span class="at">fill =</span> <span class="st">"2nd Category"</span>,</span>
+<span id="cb80-18"><a href="#cb80-18"></a>    <span class="at">caption =</span> <span class="st">"Bike sales trends look strong heading into 2020"</span></span>
+<span id="cb80-19"><a href="#cb80-19"></a>  ) <span class="sc">+</span></span>
+<span id="cb80-20"><a href="#cb80-20"></a>  </span>
+<span id="cb80-21"><a href="#cb80-21"></a>  <span class="co"># Theme</span></span>
+<span id="cb80-22"><a href="#cb80-22"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb80-23"><a href="#cb80-23"></a>  <span class="fu">theme</span>(</span>
+<span id="cb80-24"><a href="#cb80-24"></a>    <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"#08306B"</span>)</span>
+<span id="cb80-25"><a href="#cb80-25"></a>    </span>
+<span id="cb80-26"><a href="#cb80-26"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-38.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-38.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb81-2"><a href="#cb81-2"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb81-3"><a href="#cb81-3"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span></span>
+<span id="cb81-4"><a href="#cb81-4"></a>  <span class="fu">count</span>(species, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Human","2":"35"},{"1":"Droid","2":"6"},{"1":"Gungan","2":"3"},{"1":"Kaminoan","2":"2"},{"1":"Mirialan","2":"2"},{"1":"Twi'lek","2":"2"},{"1":"Wookiee","2":"2"},{"1":"Zabrak","2":"2"},{"1":"Aleena","2":"1"},{"1":"Besalisk","2":"1"},{"1":"Cerean","2":"1"},{"1":"Chagrian","2":"1"},{"1":"Clawdite","2":"1"},{"1":"Dug","2":"1"},{"1":"Ewok","2":"1"},{"1":"Geonosian","2":"1"},{"1":"Hutt","2":"1"},{"1":"Iktotchi","2":"1"},{"1":"Kaleesh","2":"1"},{"1":"Kel Dor","2":"1"},{"1":"Mon Calamari","2":"1"},{"1":"Muun","2":"1"},{"1":"Nautolan","2":"1"},{"1":"Neimodian","2":"1"},{"1":"Pau'an","2":"1"},{"1":"Quermian","2":"1"},{"1":"Rodian","2":"1"},{"1":"Skakoan","2":"1"},{"1":"Sullustan","2":"1"},{"1":"Tholothian","2":"1"},{"1":"Togruta","2":"1"},{"1":"Toong","2":"1"},{"1":"Toydarian","2":"1"},{"1":"Trandoshan","2":"1"},{"1":"Vulptereen","2":"1"},{"1":"Xexto","2":"1"},{"1":"Yoda's species","2":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="do">## # A tibble: 37 x 2</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a><span class="do">##    species      n</span></span>
+<span id="cb82-3"><a href="#cb82-3"></a><span class="do">##    &lt;chr&gt;    &lt;int&gt;</span></span>
+<span id="cb82-4"><a href="#cb82-4"></a><span class="do">##  1 Human       35</span></span>
+<span id="cb82-5"><a href="#cb82-5"></a><span class="do">##  2 Droid        6</span></span>
+<span id="cb82-6"><a href="#cb82-6"></a><span class="do">##  3 Gungan       3</span></span>
+<span id="cb82-7"><a href="#cb82-7"></a><span class="do">##  4 Kaminoan     2</span></span>
+<span id="cb82-8"><a href="#cb82-8"></a><span class="do">##  5 Mirialan     2</span></span>
+<span id="cb82-9"><a href="#cb82-9"></a><span class="do">##  6 Twi'lek      2</span></span>
+<span id="cb82-10"><a href="#cb82-10"></a><span class="do">##  7 Wookiee      2</span></span>
+<span id="cb82-11"><a href="#cb82-11"></a><span class="do">##  8 Zabrak       2</span></span>
+<span id="cb82-12"><a href="#cb82-12"></a><span class="do">##  9 Aleena       1</span></span>
+<span id="cb82-13"><a href="#cb82-13"></a><span class="do">## 10 Besalisk     1</span></span>
+<span id="cb82-14"><a href="#cb82-14"></a><span class="do">## # … with 27 more rows</span></span>
+<span id="cb82-15"><a href="#cb82-15"></a></span>
+<span id="cb82-16"><a href="#cb82-16"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb82-17"><a href="#cb82-17"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(species)) <span class="sc">%&gt;%</span></span>
+<span id="cb82-18"><a href="#cb82-18"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">as_factor</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-19"><a href="#cb82-19"></a>           <span class="fu">fct_lump</span>(<span class="at">n =</span> <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb82-20"><a href="#cb82-20"></a>  <span class="fu">count</span>(species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Human","2":"35"},{"1":"Droid","2":"6"},{"1":"Gungan","2":"3"},{"1":"Other","2":"39"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="do">## # A tibble: 4 x 2</span></span>
+<span id="cb83-2"><a href="#cb83-2"></a><span class="do">##   species     n</span></span>
+<span id="cb83-3"><a href="#cb83-3"></a><span class="do">##   &lt;fct&gt;   &lt;int&gt;</span></span>
+<span id="cb83-4"><a href="#cb83-4"></a><span class="do">## 1 Human      35</span></span>
+<span id="cb83-5"><a href="#cb83-5"></a><span class="do">## 2 Droid       6</span></span>
+<span id="cb83-6"><a href="#cb83-6"></a><span class="do">## 3 Gungan      3</span></span>
+<span id="cb83-7"><a href="#cb83-7"></a><span class="do">## 4 Other      39</span></span>
+<span id="cb83-8"><a href="#cb83-8"></a></span>
+<span id="cb83-9"><a href="#cb83-9"></a>f <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>), <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"a"</span>))</span>
+<span id="cb83-10"><a href="#cb83-10"></a>f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: b c d a</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="do">## a b c d</span></span>
+<span id="cb85-2"><a href="#cb85-2"></a><span class="do">## Levels: b c d a</span></span>
+<span id="cb85-3"><a href="#cb85-3"></a></span>
+<span id="cb85-4"><a href="#cb85-4"></a><span class="fu">fct_reorder</span>(f, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: c a b d</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="do">## a b c d</span></span>
+<span id="cb87-2"><a href="#cb87-2"></a><span class="do">## Levels: c a b d</span></span>
+<span id="cb87-3"><a href="#cb87-3"></a></span>
+<span id="cb87-4"><a href="#cb87-4"></a><span class="fu">fct_relevel</span>(f, <span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: a b c d</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="do">## a b c d</span></span>
+<span id="cb89-2"><a href="#cb89-2"></a><span class="do">## Levels: a b c d</span></span>
+<span id="cb89-3"><a href="#cb89-3"></a><span class="fu">fct_relevel</span>(f, <span class="st">"b"</span>, <span class="st">"a"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: b a c d</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a><span class="do">## a b c d</span></span>
+<span id="cb91-2"><a href="#cb91-2"></a><span class="do">## Levels: b a c d</span></span>
+<span id="cb91-3"><a href="#cb91-3"></a></span>
+<span id="cb91-4"><a href="#cb91-4"></a><span class="co"># Move to the third position</span></span>
+<span id="cb91-5"><a href="#cb91-5"></a><span class="fu">fct_relevel</span>(f, <span class="st">"a"</span>, <span class="at">after =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: b c a d</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="do">## a b c d</span></span>
+<span id="cb93-2"><a href="#cb93-2"></a><span class="do">## Levels: b c a d</span></span>
+<span id="cb93-3"><a href="#cb93-3"></a></span>
+<span id="cb93-4"><a href="#cb93-4"></a><span class="co"># Relevel to the end</span></span>
+<span id="cb93-5"><a href="#cb93-5"></a><span class="fu">fct_relevel</span>(f, <span class="st">"a"</span>, <span class="at">after =</span> <span class="cn">Inf</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: b c d a</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="do">## a b c d</span></span>
+<span id="cb95-2"><a href="#cb95-2"></a><span class="do">## Levels: b c d a</span></span>
+<span id="cb95-3"><a href="#cb95-3"></a><span class="fu">fct_relevel</span>(f, <span class="st">"a"</span>, <span class="at">after =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] a b c d
+#&gt; Levels: b c d a</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a><span class="do">## a b c d</span></span>
+<span id="cb97-2"><a href="#cb97-2"></a><span class="do">## Levels: b c d a</span></span>
+<span id="cb97-3"><a href="#cb97-3"></a></span>
+<span id="cb97-4"><a href="#cb97-4"></a><span class="co"># 1.0 Lollipop Chart: Top N Customers ----</span></span>
+<span id="cb97-5"><a href="#cb97-5"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb97-6"><a href="#cb97-6"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb97-7"><a href="#cb97-7"></a></span>
+<span id="cb97-8"><a href="#cb97-8"></a>bike_orderlines_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"../../bikes/02_wrangled_data/bike_orderlines.rds"</span>)</span>
+<span id="cb97-9"><a href="#cb97-9"></a></span>
+<span id="cb97-10"><a href="#cb97-10"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb97-11"><a href="#cb97-11"></a><span class="co"># Data Manipulation</span></span>
+<span id="cb97-12"><a href="#cb97-12"></a>top_customers_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb97-13"><a href="#cb97-13"></a>  </span>
+<span id="cb97-14"><a href="#cb97-14"></a>  <span class="co"># Select relevant columns</span></span>
+<span id="cb97-15"><a href="#cb97-15"></a>  <span class="fu">select</span>(bikeshop, total_price) <span class="sc">%&gt;%</span></span>
+<span id="cb97-16"><a href="#cb97-16"></a>  </span>
+<span id="cb97-17"><a href="#cb97-17"></a>  <span class="co"># Collapse the least frequent values into “other”</span></span>
+<span id="cb97-18"><a href="#cb97-18"></a>  <span class="fu">mutate</span>(<span class="at">bikeshop =</span> <span class="fu">as_factor</span>(bikeshop) <span class="sc">%&gt;%</span> <span class="fu">fct_lump</span>(<span class="at">n =</span> n, <span class="at">w =</span> total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-19"><a href="#cb97-19"></a>  </span>
+<span id="cb97-20"><a href="#cb97-20"></a>  <span class="co"># Group and summarize</span></span>
+<span id="cb97-21"><a href="#cb97-21"></a>  <span class="fu">group_by</span>(bikeshop) <span class="sc">%&gt;%</span></span>
+<span id="cb97-22"><a href="#cb97-22"></a>  <span class="fu">summarize</span>(<span class="at">revenue =</span> <span class="fu">sum</span>(total_price)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-23"><a href="#cb97-23"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb97-24"><a href="#cb97-24"></a>  </span>
+<span id="cb97-25"><a href="#cb97-25"></a>  <span class="co"># Reorder the column customer_city by revenue</span></span>
+<span id="cb97-26"><a href="#cb97-26"></a>  <span class="fu">mutate</span>(<span class="at">bikeshop =</span> bikeshop <span class="sc">%&gt;%</span> <span class="fu">fct_reorder</span>(revenue)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-27"><a href="#cb97-27"></a>  <span class="co"># Place "Other" at the beginning</span></span>
+<span id="cb97-28"><a href="#cb97-28"></a>  <span class="fu">mutate</span>(<span class="at">bikeshop =</span> bikeshop <span class="sc">%&gt;%</span> <span class="fu">fct_relevel</span>(<span class="st">"Other"</span>, <span class="at">after =</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-29"><a href="#cb97-29"></a>  <span class="co"># Sort by this column</span></span>
+<span id="cb97-30"><a href="#cb97-30"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(bikeshop)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-31"><a href="#cb97-31"></a>  </span>
+<span id="cb97-32"><a href="#cb97-32"></a>  <span class="co"># Add Revenue Text</span></span>
+<span id="cb97-33"><a href="#cb97-33"></a>  <span class="fu">mutate</span>(<span class="at">revenue_text =</span> scales<span class="sc">::</span><span class="fu">dollar</span>(revenue, </span>
+<span id="cb97-34"><a href="#cb97-34"></a>                                       <span class="at">scale  =</span> <span class="fl">1e-6</span>, </span>
+<span id="cb97-35"><a href="#cb97-35"></a>                                       <span class="at">prefix =</span> <span class="st">""</span>, </span>
+<span id="cb97-36"><a href="#cb97-36"></a>                                       <span class="at">suffix =</span> <span class="st">"M €"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-37"><a href="#cb97-37"></a>  </span>
+<span id="cb97-38"><a href="#cb97-38"></a>  <span class="co"># Add Cumulative Percent</span></span>
+<span id="cb97-39"><a href="#cb97-39"></a>  <span class="fu">mutate</span>(<span class="at">cum_pct =</span> <span class="fu">cumsum</span>(revenue) <span class="sc">/</span> <span class="fu">sum</span>(revenue)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-40"><a href="#cb97-40"></a>  <span class="fu">mutate</span>(<span class="at">cum_pct_text =</span> scales<span class="sc">::</span><span class="fu">percent</span>(cum_pct)) <span class="sc">%&gt;%</span></span>
+<span id="cb97-41"><a href="#cb97-41"></a>  </span>
+<span id="cb97-42"><a href="#cb97-42"></a>  <span class="co"># Add Rank</span></span>
+<span id="cb97-43"><a href="#cb97-43"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb97-44"><a href="#cb97-44"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">case_when</span>(</span>
+<span id="cb97-45"><a href="#cb97-45"></a>    rank <span class="sc">==</span> <span class="fu">max</span>(rank) <span class="sc">~</span> <span class="cn">NA_integer_</span>,</span>
+<span id="cb97-46"><a href="#cb97-46"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> rank</span>
+<span id="cb97-47"><a href="#cb97-47"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb97-48"><a href="#cb97-48"></a>  </span>
+<span id="cb97-49"><a href="#cb97-49"></a>  <span class="co"># Add Label text</span></span>
+<span id="cb97-50"><a href="#cb97-50"></a>  <span class="fu">mutate</span>(<span class="at">label_text =</span> <span class="fu">str_glue</span>(<span class="st">"Rank: {rank}</span><span class="sc">\n</span><span class="st">Rev: {revenue_text}</span><span class="sc">\n</span><span class="st">CumPct: {cum_pct_text}"</span>))</span>
+<span id="cb97-51"><a href="#cb97-51"></a></span>
+<span id="cb97-52"><a href="#cb97-52"></a><span class="co"># Data Visualization</span></span>
+<span id="cb97-53"><a href="#cb97-53"></a>top_customers_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb97-54"><a href="#cb97-54"></a>  </span>
+<span id="cb97-55"><a href="#cb97-55"></a>  <span class="co"># Canvas</span></span>
+<span id="cb97-56"><a href="#cb97-56"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(revenue, bikeshop)) <span class="sc">+</span></span>
+<span id="cb97-57"><a href="#cb97-57"></a>  </span>
+<span id="cb97-58"><a href="#cb97-58"></a>  <span class="co"># Geometries</span></span>
+<span id="cb97-59"><a href="#cb97-59"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> <span class="dv">0</span>, <span class="at">yend =</span> bikeshop), </span>
+<span id="cb97-60"><a href="#cb97-60"></a>               <span class="at">color =</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">11</span>, <span class="at">name =</span> <span class="st">"RdBu"</span>)[<span class="dv">11</span>],</span>
+<span id="cb97-61"><a href="#cb97-61"></a>               <span class="at">size  =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb97-62"><a href="#cb97-62"></a>  </span>
+<span id="cb97-63"><a href="#cb97-63"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> revenue),</span>
+<span id="cb97-64"><a href="#cb97-64"></a>             <span class="at">color =</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">11</span>, <span class="at">name =</span> <span class="st">"RdBu"</span>)[<span class="dv">11</span>]) <span class="sc">+</span></span>
+<span id="cb97-65"><a href="#cb97-65"></a>  </span>
+<span id="cb97-66"><a href="#cb97-66"></a>  <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> label_text), </span>
+<span id="cb97-67"><a href="#cb97-67"></a>             <span class="at">hjust =</span> <span class="st">"inward"</span>,</span>
+<span id="cb97-68"><a href="#cb97-68"></a>             <span class="at">size  =</span> <span class="dv">3</span>,</span>
+<span id="cb97-69"><a href="#cb97-69"></a>             <span class="at">color =</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">n =</span> <span class="dv">11</span>, <span class="at">name =</span> <span class="st">"RdBu"</span>)[<span class="dv">11</span>]) <span class="sc">+</span></span>
+<span id="cb97-70"><a href="#cb97-70"></a>  </span>
+<span id="cb97-71"><a href="#cb97-71"></a>  <span class="co"># Formatting</span></span>
+<span id="cb97-72"><a href="#cb97-72"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, </span>
+<span id="cb97-73"><a href="#cb97-73"></a>                                                    <span class="at">prefix =</span> <span class="st">""</span>,</span>
+<span id="cb97-74"><a href="#cb97-74"></a>                                                    <span class="at">suffix =</span> <span class="st">"M €"</span>)) <span class="sc">+</span></span>
+<span id="cb97-75"><a href="#cb97-75"></a>  <span class="fu">labs</span>(</span>
+<span id="cb97-76"><a href="#cb97-76"></a>    <span class="at">title =</span> <span class="fu">str_glue</span>(<span class="st">"Top {n} Customers"</span>),</span>
+<span id="cb97-77"><a href="#cb97-77"></a>    <span class="at">subtitle =</span> <span class="fu">str_glue</span>(</span>
+<span id="cb97-78"><a href="#cb97-78"></a>      <span class="st">"Start: {year(min(bike_orderlines_tbl$order_date))}</span></span>
+<span id="cb97-79"><a href="#cb97-79"></a><span class="st">               End:  {year(max(bike_orderlines_tbl$order_date))}"</span>),</span>
+<span id="cb97-80"><a href="#cb97-80"></a>    <span class="at">x =</span> <span class="st">"Revenue (M €)"</span>,</span>
+<span id="cb97-81"><a href="#cb97-81"></a>    <span class="at">y =</span> <span class="st">"Customer"</span>,</span>
+<span id="cb97-82"><a href="#cb97-82"></a>    <span class="at">caption =</span> <span class="fu">str_glue</span>(<span class="st">"Top 6 customers contribute</span></span>
+<span id="cb97-83"><a href="#cb97-83"></a><span class="st">                           52% of purchasing power."</span>)</span>
+<span id="cb97-84"><a href="#cb97-84"></a>  ) <span class="sc">+</span></span>
+<span id="cb97-85"><a href="#cb97-85"></a>  </span>
+<span id="cb97-86"><a href="#cb97-86"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb97-87"><a href="#cb97-87"></a>  <span class="fu">theme</span>(</span>
+<span id="cb97-88"><a href="#cb97-88"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb97-89"><a href="#cb97-89"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb97-90"><a href="#cb97-90"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold.italic"</span>)</span>
+<span id="cb97-91"><a href="#cb97-91"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-39.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-39.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># Select columns and filter categories</span></span>
+<span id="cb98-2"><a href="#cb98-2"></a>pct_sales_by_customer_tbl <span class="ot">&lt;-</span> bike_orderlines_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="#cb98-3"></a>  </span>
+<span id="cb98-4"><a href="#cb98-4"></a>  <span class="fu">select</span>(bikeshop, category_1, category_2, quantity) <span class="sc">%&gt;%</span></span>
+<span id="cb98-5"><a href="#cb98-5"></a>  <span class="fu">filter</span>(category_1 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Mountain"</span>,<span class="st">"Road"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-6"><a href="#cb98-6"></a>  </span>
+<span id="cb98-7"><a href="#cb98-7"></a>  <span class="co"># Group by category and summarize</span></span>
+<span id="cb98-8"><a href="#cb98-8"></a>  <span class="fu">group_by</span>(bikeshop, category_1, category_2) <span class="sc">%&gt;%</span></span>
+<span id="cb98-9"><a href="#cb98-9"></a>  <span class="fu">summarise</span>(<span class="at">total_qty =</span> <span class="fu">sum</span>(quantity)) <span class="sc">%&gt;%</span></span>
+<span id="cb98-10"><a href="#cb98-10"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-11"><a href="#cb98-11"></a>  </span>
+<span id="cb98-12"><a href="#cb98-12"></a>  <span class="co"># Add missing groups (not necessarily mandatory, but we'd get holes in the plot)</span></span>
+<span id="cb98-13"><a href="#cb98-13"></a>  <span class="co"># complete() creates NAs. We need to set those to 0.</span></span>
+<span id="cb98-14"><a href="#cb98-14"></a>  <span class="fu">complete</span>(bikeshop, <span class="fu">nesting</span>(category_1, category_2)) <span class="sc">%&gt;%</span> </span>
+<span id="cb98-15"><a href="#cb98-15"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(total_qty, <span class="sc">~</span><span class="fu">replace_na</span>(., <span class="dv">0</span>))) <span class="sc">%&gt;%</span>  </span>
+<span id="cb98-16"><a href="#cb98-16"></a>  </span>
+<span id="cb98-17"><a href="#cb98-17"></a>  <span class="co"># Group by bikeshop and calculate revenue ratio</span></span>
+<span id="cb98-18"><a href="#cb98-18"></a>  <span class="fu">group_by</span>(bikeshop) <span class="sc">%&gt;%</span></span>
+<span id="cb98-19"><a href="#cb98-19"></a>  <span class="fu">mutate</span>(<span class="at">pct =</span> total_qty <span class="sc">/</span> <span class="fu">sum</span>(total_qty)) <span class="sc">%&gt;%</span></span>
+<span id="cb98-20"><a href="#cb98-20"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-21"><a href="#cb98-21"></a>  </span>
+<span id="cb98-22"><a href="#cb98-22"></a>  <span class="co"># Reverse order of bikeshops</span></span>
+<span id="cb98-23"><a href="#cb98-23"></a>  <span class="fu">mutate</span>(<span class="at">bikeshop =</span> <span class="fu">as.factor</span>(bikeshop) <span class="sc">%&gt;%</span> <span class="fu">fct_rev</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb98-24"><a href="#cb98-24"></a>  <span class="co"># Just to verify</span></span>
+<span id="cb98-25"><a href="#cb98-25"></a>  <span class="fu">mutate</span>(<span class="at">bikeshop_num =</span> <span class="fu">as.numeric</span>(bikeshop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `summarise()` has grouped output by 'bikeshop', 'category_1'. You can override
+#&gt; using the `.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># Data Visualization</span></span>
+<span id="cb100-2"><a href="#cb100-2"></a>pct_sales_by_customer_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb100-3"><a href="#cb100-3"></a>  </span>
+<span id="cb100-4"><a href="#cb100-4"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(category_2, bikeshop)) <span class="sc">+</span></span>
+<span id="cb100-5"><a href="#cb100-5"></a>  </span>
+<span id="cb100-6"><a href="#cb100-6"></a>  <span class="co"># Geometries</span></span>
+<span id="cb100-7"><a href="#cb100-7"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> pct)) <span class="sc">+</span></span>
+<span id="cb100-8"><a href="#cb100-8"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(pct, <span class="at">accuracy =</span> 1L)), </span>
+<span id="cb100-9"><a href="#cb100-9"></a>            <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb100-10"><a href="#cb100-10"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> category_1, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb100-11"><a href="#cb100-11"></a>  </span>
+<span id="cb100-12"><a href="#cb100-12"></a>  <span class="co"># Formatting</span></span>
+<span id="cb100-13"><a href="#cb100-13"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"#2C3E50"</span>) <span class="sc">+</span></span>
+<span id="cb100-14"><a href="#cb100-14"></a>  <span class="fu">labs</span>(</span>
+<span id="cb100-15"><a href="#cb100-15"></a>    <span class="at">title =</span> <span class="st">"Heatmap of Purchasing Habits"</span>,</span>
+<span id="cb100-16"><a href="#cb100-16"></a>    <span class="at">x =</span> <span class="st">"Bike Type (Category 2)"</span>,</span>
+<span id="cb100-17"><a href="#cb100-17"></a>    <span class="at">y =</span> <span class="st">"Customer"</span>,</span>
+<span id="cb100-18"><a href="#cb100-18"></a>    <span class="at">caption =</span> <span class="fu">str_glue</span>(</span>
+<span id="cb100-19"><a href="#cb100-19"></a>      <span class="st">"Customers that prefer Road: </span></span>
+<span id="cb100-20"><a href="#cb100-20"></a><span class="st">        To be discussed ...</span></span>
+<span id="cb100-21"><a href="#cb100-21"></a><span class="st">        </span></span>
+<span id="cb100-22"><a href="#cb100-22"></a><span class="st">        Customers that prefer Mountain: </span></span>
+<span id="cb100-23"><a href="#cb100-23"></a><span class="st">        To be discussed ..."</span>)</span>
+<span id="cb100-24"><a href="#cb100-24"></a>  ) <span class="sc">+</span></span>
+<span id="cb100-25"><a href="#cb100-25"></a>  </span>
+<span id="cb100-26"><a href="#cb100-26"></a>  <span class="fu">theme</span>(</span>
+<span id="cb100-27"><a href="#cb100-27"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb100-28"><a href="#cb100-28"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb100-29"><a href="#cb100-29"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb100-30"><a href="#cb100-30"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold.italic"</span>)</span>
+<span id="cb100-31"><a href="#cb100-31"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-1-40.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img src="04_data_visualization_files/figure-html/unnamed-chunk-1-40.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="challenge-4.1" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Challenge 4.1</h1>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-2_3e944877f84eab88e1eeb5c5a71716bf">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb101-2"><a href="#cb101-2"></a><span class="fu">library</span>(tidyverse) <span class="co"># loads ggplot2</span></span>
+<span id="cb101-3"><a href="#cb101-3"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb101-4"><a href="#cb101-4"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb101-5"><a href="#cb101-5"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb101-6"><a href="#cb101-6"></a><span class="fu">library</span>(scales)</span>
+<span id="cb101-7"><a href="#cb101-7"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'maps'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     map</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">50</span>, <span class="at">repr.plot.height=</span><span class="dv">3</span>)</span>
+<span id="cb104-2"><a href="#cb104-2"></a></span>
+<span id="cb104-3"><a href="#cb104-3"></a><span class="co"># Challenge 1</span></span>
+<span id="cb104-4"><a href="#cb104-4"></a></span>
+<span id="cb104-5"><a href="#cb104-5"></a>covid_data_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://covid.ourworldindata.org/data/owid-covid-data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Rows: 306185 Columns: 67</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; -- Column specification --------------------------------------------------------
+#&gt; Delimiter: ","
+#&gt; chr   (4): iso_code, continent, location, tests_units
+#&gt; dbl  (62): total_cases, new_cases, new_cases_smoothed, total_deaths, new_dea...
+#&gt; date  (1): date
+#&gt; 
+#&gt; i Use `spec()` to retrieve the full column specification for this data.
+#&gt; i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1"></a>covid_data_graph_tbl <span class="ot">&lt;-</span> covid_data_tbl <span class="sc">%&gt;%</span> <span class="co"># Read the covid data</span></span>
+<span id="cb107-2"><a href="#cb107-2"></a>  <span class="fu">filter</span>(location <span class="sc">==</span> <span class="st">"Europe"</span> <span class="sc">|</span> location <span class="sc">==</span> <span class="st">"Germany"</span> <span class="sc">|</span> location <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">|</span> location <span class="sc">==</span> <span class="st">"France"</span> <span class="sc">|</span> location <span class="sc">==</span> <span class="st">"Spain"</span> <span class="sc">|</span> location <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">%&gt;%</span> <span class="co"># Filter only the locations specified in the task</span></span>
+<span id="cb107-3"><a href="#cb107-3"></a>  <span class="fu">select</span>(date,total_cases,location) <span class="sc">%&gt;%</span> <span class="co"># Only date, total_cases and location are needed</span></span>
+<span id="cb107-4"><a href="#cb107-4"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_cases)) <span class="sc">%&gt;%</span> <span class="co"># Remove those dates where the total_cases number is not a number</span></span>
+<span id="cb107-5"><a href="#cb107-5"></a>  <span class="fu">filter</span>(date <span class="sc">&lt;</span> <span class="st">'2022-04-20'</span>) <span class="co"># Plot in task stops in may of 2022, so this data stops there as well</span></span>
+<span id="cb107-6"><a href="#cb107-6"></a></span>
+<span id="cb107-7"><a href="#cb107-7"></a>covid_data_dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(covid_data_graph_tbl) <span class="co"># Convert tibble to data.frame</span></span>
+<span id="cb107-8"><a href="#cb107-8"></a></span>
+<span id="cb107-9"><a href="#cb107-9"></a>last_date_europe <span class="ot">&lt;-</span> covid_data_dt[location <span class="sc">==</span> <span class="st">"Europe"</span>][<span class="fu">order</span>(<span class="sc">-</span>date)][<span class="dv">1</span>]<span class="sc">$</span>date</span>
+<span id="cb107-10"><a href="#cb107-10"></a>last_date_USA <span class="ot">&lt;-</span> covid_data_dt[location <span class="sc">==</span> <span class="st">"United States"</span>][<span class="fu">order</span>(<span class="sc">-</span>date)][<span class="dv">1</span>]<span class="sc">$</span>date</span>
+<span id="cb107-11"><a href="#cb107-11"></a></span>
+<span id="cb107-12"><a href="#cb107-12"></a>addMillions <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) <span class="co">#&lt;== function will add " %" to any number, and allows for any additional formatting through "format".</span></span>
+<span id="cb107-13"><a href="#cb107-13"></a>    <span class="fu">format</span>(<span class="fu">paste0</span>(x<span class="sc">/</span>(<span class="fl">1e+06</span>), <span class="st">" M"</span>), ...)</span>
+<span id="cb107-14"><a href="#cb107-14"></a></span>
+<span id="cb107-15"><a href="#cb107-15"></a>covid_data_dt <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>total_cases),<span class="at">palette=</span><span class="st">"Dark2"</span>) <span class="sc">+</span> <span class="co"># plot total_cases over time</span></span>
+<span id="cb107-16"><a href="#cb107-16"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">colour=</span>location)) <span class="sc">+</span> <span class="co"># each location gets its own line</span></span>
+<span id="cb107-17"><a href="#cb107-17"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>) <span class="sc">+</span> <span class="co"># position legend at the bottom</span></span>
+<span id="cb107-18"><a href="#cb107-18"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 month"</span>, <span class="at">date_labels =</span> <span class="st">"%B '%y"</span>) <span class="sc">+</span> <span class="co"># Change the x axis to a date axis with montly intervals and "month 'year" labels</span></span>
+<span id="cb107-19"><a href="#cb107-19"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span> <span class="co"># Rotate the x-axis labels by 45 degrees so they don't collide with each other</span></span>
+<span id="cb107-20"><a href="#cb107-20"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200000000</span>, <span class="at">by =</span> <span class="dv">50000000</span>), <span class="at">labels =</span> addMillions) <span class="sc">+</span> </span>
+<span id="cb107-21"><a href="#cb107-21"></a>  <span class="fu">labs</span>( <span class="at">title =</span> <span class="st">"COVID-19 confirmed cases worldwide"</span>, <span class="co"># Set plot title.</span></span>
+<span id="cb107-22"><a href="#cb107-22"></a>        <span class="at">subtitle =</span> <span class="st">"As of 19/04/2022"</span>, <span class="co"># Set plot subtitle.</span></span>
+<span id="cb107-23"><a href="#cb107-23"></a>        <span class="at">y =</span> <span class="st">"Cumulative Cases"</span>, <span class="co"># Set plot y-axis label.</span></span>
+<span id="cb107-24"><a href="#cb107-24"></a>        <span class="at">colour=</span><span class="st">"Continent / Country"</span>) <span class="sc">+</span> <span class="co"># Set location/country legend title.</span></span>
+<span id="cb107-25"><a href="#cb107-25"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x=</span><span class="fu">element_blank</span>(), <span class="co"># Remove x axis label </span></span>
+<span id="cb107-26"><a href="#cb107-26"></a>        <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>)) <span class="sc">+</span> <span class="co"># Increase text size</span></span>
+<span id="cb107-27"><a href="#cb107-27"></a></span>
+<span id="cb107-28"><a href="#cb107-28"></a>  <span class="fu">geom_label</span>( <span class="co"># Display geom_label for europe and united states last data point</span></span>
+<span id="cb107-29"><a href="#cb107-29"></a>    <span class="at">data=</span>covid_data_dt <span class="sc">%&gt;%</span> <span class="fu">filter</span>((location <span class="sc">==</span> <span class="st">"Europe"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> last_date_europe) <span class="sc">|</span> (location <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">&amp;</span> date <span class="sc">==</span> last_date_USA)),</span>
+<span id="cb107-30"><a href="#cb107-30"></a>    <span class="fu">aes</span>(<span class="at">label=</span>total_cases),<span class="at">hjust=</span><span class="dv">1</span>,<span class="at">vjust=</span><span class="fl">0.4</span></span>
+<span id="cb107-31"><a href="#cb107-31"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img src="04_data_visualization_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>#Challenge 4.2</p>
+<div class="cell" data-hash="04_data_visualization_cache/html/unnamed-chunk-3_673c31c83a7af8a640d9687667de22bb">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="co"># Challenge 2</span></span>
+<span id="cb108-2"><a href="#cb108-2"></a></span>
+<span id="cb108-3"><a href="#cb108-3"></a><span class="co"># Get Case-Fatality rate (deaths/cases)</span></span>
+<span id="cb108-4"><a href="#cb108-4"></a>covid_data_graph_tbl <span class="ot">&lt;-</span> covid_data_tbl <span class="sc">%&gt;%</span> <span class="co"># Read the covid data.</span></span>
+<span id="cb108-5"><a href="#cb108-5"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_cases) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(total_deaths) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(total_deaths_per_million)) <span class="sc">%&gt;%</span> <span class="co"># Remove those dates where the total_cases number is not a number.</span></span>
+<span id="cb108-6"><a href="#cb108-6"></a>  <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total_cases =</span> <span class="fu">sum</span>(total_cases),<span class="at">total_deaths =</span> <span class="fu">sum</span>(total_deaths),<span class="at">total_deaths_per_million =</span> <span class="fu">sum</span>(total_deaths_per_million)) <span class="sc">%&gt;%</span> <span class="co"># Group by location (country) and sum up total_cases and total_deaths over all dates.</span></span>
+<span id="cb108-7"><a href="#cb108-7"></a>  <span class="fu">mutate</span>(<span class="at">fatality_rate =</span> (total_deaths<span class="sc">/</span>total_cases)) <span class="sc">%&gt;%</span> <span class="co"># Add fatality_rate column to the tibble.</span></span>
+<span id="cb108-8"><a href="#cb108-8"></a>                                                         <span class="co"># Can be exchanged for total_deaths_per_million to visualize mortality rate.</span></span>
+<span id="cb108-9"><a href="#cb108-9"></a>  <span class="fu">select</span>(fatality_rate,location) <span class="sc">%&gt;%</span>  <span class="co"># Only maintain fatality_rate and location</span></span>
+<span id="cb108-10"><a href="#cb108-10"></a>  <span class="fu">mutate</span>(<span class="at">location =</span> <span class="fu">case_when</span>( <span class="co"># Replace non matching location names</span></span>
+<span id="cb108-11"><a href="#cb108-11"></a>    </span>
+<span id="cb108-12"><a href="#cb108-12"></a>    location <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">~</span> <span class="st">"UK"</span>,</span>
+<span id="cb108-13"><a href="#cb108-13"></a>    location <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">~</span> <span class="st">"USA"</span>,</span>
+<span id="cb108-14"><a href="#cb108-14"></a>    location <span class="sc">==</span> <span class="st">"Democratic Republic of Congo"</span> <span class="sc">~</span> <span class="st">"Democratic Republic of the Congo"</span>,</span>
+<span id="cb108-15"><a href="#cb108-15"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> location</span>
+<span id="cb108-16"><a href="#cb108-16"></a>    </span>
+<span id="cb108-17"><a href="#cb108-17"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb108-18"><a href="#cb108-18"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb108-19"><a href="#cb108-19"></a></span>
+<span id="cb108-20"><a href="#cb108-20"></a>total_deaths_worldwide <span class="ot">&lt;-</span> covid_data_tbl <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_deaths)) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(location) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">row_number</span>()<span class="sc">==</span><span class="fu">n</span>()) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(total_deaths) <span class="sc">%&gt;%</span></span>
+<span id="cb108-21"><a href="#cb108-21"></a>                                        <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">total_deaths =</span> <span class="fu">sum</span>(total_deaths))</span>
+<span id="cb108-22"><a href="#cb108-22"></a></span>
+<span id="cb108-23"><a href="#cb108-23"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb108-24"><a href="#cb108-24"></a><span class="fu">library</span>(maptools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Loading required package: sp</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; Checking rgeos availability: FALSE
+#&gt; Please note that 'maptools' will be retired by the end of 2023,
+#&gt; plan transition at your earliest convenience;
+#&gt; some functionality will be moved to 'sp'.
+#&gt;      Note: when rgeos is not available, polygon geometry     computations in maptools depend on gpclib,
+#&gt;      which has a restricted licence. It is disabled by default;
+#&gt;      to enable gpclib, type gpclibPermit()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1"></a>colour_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</span>
+<span id="cb111-2"><a href="#cb111-2"></a>colours <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"darkblue"</span>, <span class="st">"lightblue"</span>, <span class="st">"yellow"</span>)</span>
+<span id="cb111-3"><a href="#cb111-3"></a></span>
+<span id="cb111-4"><a href="#cb111-4"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>)</span>
+<span id="cb111-5"><a href="#cb111-5"></a><span class="fu">ggplot</span>(covid_data_graph_tbl) <span class="sc">+</span> </span>
+<span id="cb111-6"><a href="#cb111-6"></a>  <span class="fu">geom_map</span>(<span class="at">dat=</span>world, <span class="at">map=</span>world, </span>
+<span id="cb111-7"><a href="#cb111-7"></a>           <span class="fu">aes</span>(<span class="at">map_id=</span>region), <span class="at">fill=</span><span class="st">"white"</span>, <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb111-8"><a href="#cb111-8"></a>  <span class="fu">geom_map</span>(<span class="at">map=</span>world, </span>
+<span id="cb111-9"><a href="#cb111-9"></a>           <span class="fu">aes</span>(<span class="at">map_id=</span>location, <span class="at">fill=</span>fatality_rate), <span class="at">color=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb111-10"><a href="#cb111-10"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> world<span class="sc">$</span>long, <span class="at">y =</span> world<span class="sc">$</span>lat) <span class="sc">+</span></span>
+<span id="cb111-11"><a href="#cb111-11"></a>  <span class="fu">labs</span>( <span class="at">title =</span> <span class="st">"Confirmed COVID-19 fatality rate."</span>, <span class="co"># Set plot title.</span></span>
+<span id="cb111-12"><a href="#cb111-12"></a>        <span class="at">subtitle =</span> <span class="fu">paste0</span>(<span class="st">"Around "</span>,<span class="fu">round</span>(total_deaths_worldwide <span class="sc">/</span> <span class="fl">1e6</span>, <span class="dv">1</span>),<span class="st">" Million confirmed COVID-19 deaths worldwide."</span>), <span class="co"># Set plot subtitle.</span></span>
+<span id="cb111-13"><a href="#cb111-13"></a>        <span class="at">caption =</span> <span class="fu">paste0</span>(<span class="st">"Date:"</span>,<span class="fu">format</span>(<span class="fu">Sys.Date</span>(), <span class="at">format=</span><span class="st">"%d/%m/%Y"</span>)), <span class="co"># Set plot caption.</span></span>
+<span id="cb111-14"><a href="#cb111-14"></a>        <span class="at">fill =</span> <span class="st">"Fatality rate"</span>) <span class="sc">+</span> <span class="co"># Set plot legend caption.</span></span>
+<span id="cb111-15"><a href="#cb111-15"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x=</span><span class="fu">element_blank</span>(), <span class="co"># Remove x axis label. </span></span>
+<span id="cb111-16"><a href="#cb111-16"></a>        <span class="at">axis.title.y=</span><span class="fu">element_blank</span>(), <span class="co"># Remove y axis label.</span></span>
+<span id="cb111-17"><a href="#cb111-17"></a>        <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>(), <span class="co"># Remove axis ticks.</span></span>
+<span id="cb111-18"><a href="#cb111-18"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(), <span class="co"># Remove x axis texts.</span></span>
+<span id="cb111-19"><a href="#cb111-19"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), <span class="co"># Remove y axis texts.</span></span>
+<span id="cb111-20"><a href="#cb111-20"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_data_visualization_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42"><img src="04_data_visualization_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -425,6 +2092,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"loop":true,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 

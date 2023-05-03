@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joschka Schwarz">
+<meta name="author" content="Julius von Sulecki">
 
 <title>MyLabJournal - Data Wrangling</title>
 <style>
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -62,6 +125,9 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 </head>
@@ -131,7 +197,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#patent-dominance" id="toc-patent-dominance" class="nav-link active" data-scroll-target="#patent-dominance"><span class="toc-section-number">1</span>  Patent Dominance</a></li>
+  <li><a href="#recent-patent-activity" id="toc-recent-patent-activity" class="nav-link" data-scroll-target="#recent-patent-activity"><span class="toc-section-number">2</span>  Recent Patent Activity</a></li>
+  <li><a href="#innovation-in-tech" id="toc-innovation-in-tech" class="nav-link" data-scroll-target="#innovation-in-tech"><span class="toc-section-number">3</span>  Innovation In Tech</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -148,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Julius von Sulecki </p>
           </div>
   </div>
     
@@ -159,21 +233,242 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>I first attempted to replicate both the example and business case, which can be found in the DATA_WRANGLING.R and DATA_WRANGLING_BUSINESS_CASE.R files. After completing this task, I began working on the challenge with a reduced dataset, due to limitations with my hardware.</p>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-1_39001a8552c26eb93bf971eb69db2706">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+#&gt; v dplyr     1.1.2     v readr     2.1.4
+#&gt; v forcats   1.0.0     v stringr   1.5.0
+#&gt; v ggplot2   3.4.2     v tibble    3.2.1
+#&gt; v lubridate 1.9.2     v tidyr     1.3.0
+#&gt; v purrr     1.0.1     
+#&gt; -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+#&gt; x dplyr::filter() masks stats::filter()
+#&gt; x dplyr::lag()    masks stats::lag()
+#&gt; i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-Note
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(data.table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'data.table'
+#&gt; 
+#&gt; The following objects are masked from 'package:lubridate':
+#&gt; 
+#&gt;     hour, isoweek, mday, minute, month, quarter, second, wday, week,
+#&gt;     yday, year
+#&gt; 
+#&gt; The following objects are masked from 'package:dplyr':
+#&gt; 
+#&gt;     between, first, last
+#&gt; 
+#&gt; The following object is masked from 'package:purrr':
+#&gt; 
+#&gt;     transpose</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(vroom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; 
+#&gt; Attaching package: 'vroom'
+#&gt; 
+#&gt; The following objects are masked from 'package:readr':
+#&gt; 
+#&gt;     as.col_spec, col_character, col_date, col_datetime, col_double,
+#&gt;     col_factor, col_guess, col_integer, col_logical, col_number,
+#&gt;     col_skip, col_time, cols, cols_condense, cols_only, date_names,
+#&gt;     date_names_lang, date_names_langs, default_locale, fwf_cols,
+#&gt;     fwf_empty, fwf_positions, fwf_widths, locale, output_column,
+#&gt;     problems, spec</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="do">## Data Loading ##</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co"># Using the reduced data set</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># loading patent.tsv file</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>col_types_patent <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="at">date =</span> <span class="fu">col_date</span>(<span class="st">"%Y-%m-%d"</span>),</span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="at">num_claims =</span> <span class="fu">col_double</span>()</span>
+<span id="cb7-9"><a href="#cb7-9"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10"></a>patent_tbl <span class="ot">&lt;-</span> <span class="fu">vroom</span>(</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  <span class="at">file       =</span> <span class="st">"../../Patent_data_reduced/patent.tsv"</span>, </span>
+<span id="cb7-12"><a href="#cb7-12"></a>  <span class="at">delim      =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb7-13"><a href="#cb7-13"></a>  <span class="at">col_types  =</span> col_types_patent,</span>
+<span id="cb7-14"><a href="#cb7-14"></a>  <span class="at">na         =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a>)</span>
+<span id="cb7-16"><a href="#cb7-16"></a>patent_tbl <span class="ot">&lt;-</span> <span class="fu">rename</span>(patent_tbl,<span class="at">patent_id =</span> id) <span class="co"># Rename id to patent_id to make merging easier</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I followed a similar process for loading the assignee.tsv, patent_assignee.tsv, and uspc.tsv files as I did for the patent.tsv file. To determine the appropriate column names and data types for each file, I reviewed the file contents and analyzed the variable types present in each column.</p>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-2_4cd04304999106e395f2f2dd8ead25e8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># loading assignee.tsv file</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>col_types_assignee <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="at">id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="at">type =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="at">organization =</span> <span class="fu">col_character</span>()</span>
+<span id="cb8-6"><a href="#cb8-6"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>assignee_tbl <span class="ot">&lt;-</span> <span class="fu">vroom</span>(</span>
+<span id="cb8-8"><a href="#cb8-8"></a>  <span class="at">file       =</span> <span class="st">"../../Patent_data_reduced/assignee.tsv"</span>, </span>
+<span id="cb8-9"><a href="#cb8-9"></a>  <span class="at">delim      =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb8-10"><a href="#cb8-10"></a>  <span class="at">col_types  =</span> col_types_assignee,</span>
+<span id="cb8-11"><a href="#cb8-11"></a>  <span class="at">na         =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>)</span>
+<span id="cb8-13"><a href="#cb8-13"></a>assignee_tbl <span class="ot">&lt;-</span> <span class="fu">rename</span>(assignee_tbl,<span class="at">assignee_id =</span> id) <span class="co"># Rename id to assignee_id to make merging easier</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="co"># loading patent_assignee.tsv file</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>col_types_patent_assignee <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-17"><a href="#cb8-17"></a>  <span class="at">patent_id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-18"><a href="#cb8-18"></a>  <span class="at">assignee_id =</span> <span class="fu">col_character</span>()</span>
+<span id="cb8-19"><a href="#cb8-19"></a>)</span>
+<span id="cb8-20"><a href="#cb8-20"></a>patent_assignee_tbl <span class="ot">&lt;-</span> <span class="fu">vroom</span>(</span>
+<span id="cb8-21"><a href="#cb8-21"></a>  <span class="at">file       =</span> <span class="st">"../../Patent_data_reduced/patent_assignee.tsv"</span>, </span>
+<span id="cb8-22"><a href="#cb8-22"></a>  <span class="at">delim      =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb8-23"><a href="#cb8-23"></a>  <span class="at">col_types  =</span> col_types_patent_assignee,</span>
+<span id="cb8-24"><a href="#cb8-24"></a>  <span class="at">na         =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25"></a>)</span>
+<span id="cb8-26"><a href="#cb8-26"></a></span>
+<span id="cb8-27"><a href="#cb8-27"></a><span class="co"># loading uspc.tsv file</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a>col_types_uspc <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb8-29"><a href="#cb8-29"></a>  <span class="at">patent_id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-30"><a href="#cb8-30"></a>  <span class="at">mainclass_id =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb8-31"><a href="#cb8-31"></a>  <span class="at">sequence =</span> <span class="fu">col_integer</span>()</span>
+<span id="cb8-32"><a href="#cb8-32"></a>)</span>
+<span id="cb8-33"><a href="#cb8-33"></a>uspc_tbl <span class="ot">&lt;-</span> <span class="fu">vroom</span>(</span>
+<span id="cb8-34"><a href="#cb8-34"></a>  <span class="at">file       =</span> <span class="st">"../../Patent_data_reduced/uspc.tsv"</span>, </span>
+<span id="cb8-35"><a href="#cb8-35"></a>  <span class="at">delim      =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>, </span>
+<span id="cb8-36"><a href="#cb8-36"></a>  <span class="at">col_types  =</span> col_types_uspc,</span>
+<span id="cb8-37"><a href="#cb8-37"></a>  <span class="at">na         =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"NULL"</span>)</span>
+<span id="cb8-38"><a href="#cb8-38"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="patent-dominance" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Patent Dominance</h1>
+<p>The following steps were performed for the patent dominance task.</p>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-3_7c7293dafa2b891761d1240256357693">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Convert patent_assignee_tbl to data.table and group it's entries by assignee_id. Then the number of elements per group is stored in a column patents.</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>patent_dominance_dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(patent_assignee_tbl)[,.(<span class="at">patents =</span> .N),by <span class="ot">=</span> assignee_id]</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># Combine patent_activity_dt with assignee_tbl by patent_id to combine assignee info with company-name and -type info.</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>patent_dominance_dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(<span class="fu">merge</span>(<span class="fu">as_tibble</span>(patent_dominance_dt),assignee_tbl,<span class="at">by=</span><span class="st">"assignee_id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>                                    .[type <span class="sc">==</span> <span class="dv">2</span>] <span class="sc">%&gt;%</span> <span class="co"># Then the data table can be filtered by only allowing US Companies or Corporations</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>                                    .[<span class="fu">order</span>(<span class="sc">-</span>patents),patents,organization] <span class="co"># Afterwards the list is sorted by the number of patents.</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>                                                                            <span class="co"># Only the patents and organization name column is kept for better looking output.</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="fu">print</span>(<span class="st">"What US company / corporation has the most patents?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "What US company / corporation has the most patents?"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">print</span>(patent_dominance_dt[<span class="dv">1</span>]) <span class="co"># Take the first element of the ordered list.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;                                   organization patents
+#&gt; 1: International Business Machines Corporation    7547</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">print</span>(<span class="st">"List the 10 US companies with the most assigned/granted patents."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "List the 10 US companies with the most assigned/granted patents."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">print</span>(patent_dominance_dt[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) <span class="co"># Take the first 10 elements of the ordered list.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;                                    organization patents
+#&gt;  1: International Business Machines Corporation    7547
+#&gt;  2:                       Microsoft Corporation    3165
+#&gt;  3:                                 Google Inc.    2668
+#&gt;  4:                       QUALCOMM Incorporated    2597
+#&gt;  5:                                  Apple Inc.    2201
+#&gt;  6:                    General Electric Company    1873
+#&gt;  7:   Hewlett-Packard Development Company, L.P.    1638
+#&gt;  8:          AT&amp;T INTELLECTUAL PROPERTY I, L.P.    1625
+#&gt;  9:                           Intel Corporation    1616
+#&gt; 10:         GM Global Technology Operations LLC    1533</code></pre>
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
+</section>
+<section id="recent-patent-activity" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Recent Patent Activity</h1>
+<p>Similarly I performed following steps (some similar to patent dominance) to find the top companies by patent activity in august of 2014:</p>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-4_fac7f3b10aa601b88bcc4a9c249edcbe">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Take patent_tbl and separate into year, month and day and convert to data.table.</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>patent_activity_dt <span class="ot">&lt;-</span> patent_tbl <span class="sc">%&gt;%</span> <span class="fu">separate</span>(<span class="at">col =</span> date,<span class="at">into =</span> <span class="fu">c</span>(<span class="st">"year"</span>,<span class="st">"month"</span>,<span class="st">"day"</span>),<span class="at">sep =</span> <span class="st">"-"</span>,<span class="at">convert =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>                                 <span class="fu">as.data.table</span>() <span class="sc">%&gt;%</span> .[year <span class="sc">==</span> <span class="dv">2014</span> <span class="sc">&amp;</span> month <span class="sc">==</span> <span class="dv">8</span>] <span class="co"># Then filter by august (8) 2014.</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co"># Combine patent_activity_dt with patent_assignee_tbl by patent_id to combine patent info with assignee info..</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>patent_activity_dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(<span class="fu">merge</span>(<span class="fu">as_tibble</span>(patent_activity_dt),patent_assignee_tbl,<span class="at">by=</span><span class="st">"patent_id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>                                   .[,.(<span class="at">patents =</span> .N),by <span class="ot">=</span> assignee_id] <span class="co"># Group and sum up by assignee_id.</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co"># Combine patent_activity_dt with assignee_tbl by patent_id to combine assignee info with company-name and -type info.</span></span>
+<span id="cb17-8"><a href="#cb17-8"></a>patent_activity_dt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(<span class="fu">merge</span>(<span class="fu">as_tibble</span>(patent_activity_dt),assignee_tbl,<span class="at">by=</span><span class="st">"assignee_id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="#cb17-9"></a>                                    .[<span class="fu">order</span>(<span class="sc">-</span>patents),.(organization,type,patents)] <span class="co"># Order by number of patents and discard assignee_id.</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="fu">print</span>(<span class="st">"What US company had the most patents granted in August 2014?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "What US company had the most patents granted in August 2014?"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">print</span>(patent_activity_dt[type <span class="sc">==</span> <span class="dv">2</span>][<span class="dv">1</span>]) <span class="co"># Filter by US Company or Corporation and take the first element of the ordered list.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;                                   organization type patents
+#&gt; 1: International Business Machines Corporation    2     718</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">print</span>(<span class="st">"List the top 10 companies with the most new granted patents for August 2014."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "List the top 10 companies with the most new granted patents for August 2014."</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">print</span>(patent_activity_dt[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) <span class="co"># Take the first 10 elements of the ordered list.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;                                    organization type patents
+#&gt;  1: International Business Machines Corporation    2     718
+#&gt;  2:               Samsung Electronics Co., Ltd.    3     524
+#&gt;  3:                      Canon Kabushiki Kaisha    3     361
+#&gt;  4:                       Microsoft Corporation    2     337
+#&gt;  5:                            Sony Corporation    3     269
+#&gt;  6:                                 Google Inc.    2     240
+#&gt;  7:                       QUALCOMM Incorporated    2     223
+#&gt;  8:                                  Apple Inc.    2     222
+#&gt;  9:                    Kabushiki Kaisha Toshiba    3     213
+#&gt; 10:                         LG Electronics Inc.    3     211</code></pre>
+</div>
+</div>
+</section>
+<section id="innovation-in-tech" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Innovation In Tech</h1>
+<p>Similarly I performed these steps (some similar to patent dominance and recent patent activity) to find the top main classes:</p>
+<div class="cell" data-hash="03_data_wrangling_cache/html/unnamed-chunk-5_27ffedb4ab7823f7a2ade4cf239b15a7">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># For most innovative tech sensor group and sum the uspc_tbl by mainclass_id.</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>most_innovative_tech_sectors <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(uspc_tbl)[,.(<span class="at">patents =</span> .N),by <span class="ot">=</span> mainclass_id] <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>                                            .[<span class="fu">order</span>(<span class="sc">-</span>patents),patents,mainclass_id] <span class="co"># Then order the list by descending patents.</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># Retrieve the assignee_ids of the 10 companies that have the most patents and only keep the assignee_ids of those.</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>top_USPTO_main_classes <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(patent_assignee_tbl)[,.(<span class="at">patents =</span> .N),by <span class="ot">=</span> assignee_id][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>][,assignee_id]</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co"># Search through the patent_assignee_tbl again and only keep those patents that come from one of those 10 companies.</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>top_USPTO_main_classes <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(patent_assignee_tbl)[assignee_id <span class="sc">%in%</span> top_USPTO_main_classes]</span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co"># With the list of patents combine it by the patent_id with the uspc_tbl.</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a>top_USPTO_main_classes <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(<span class="fu">merge</span>(<span class="fu">as_tibble</span>(top_USPTO_main_classes),uspc_tbl,<span class="at">by=</span><span class="st">"patent_id"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a>                                        .[,.(<span class="at">patents =</span> .N),by <span class="ot">=</span> mainclass_id] <span class="sc">%&gt;%</span> <span class="co"># Group and sum up by mainclass_id.</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a>                                        .[<span class="fu">order</span>(<span class="sc">-</span>patents),patents,mainclass_id] <span class="co"># Then order the list by descending patents.</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="fu">print</span>(<span class="st">"What is the most innovative tech sector?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "What is the most innovative tech sector?"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">print</span>(most_innovative_tech_sectors[<span class="dv">1</span>]) <span class="co"># Take the first element of the ordered list.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    mainclass_id patents
+#&gt; 1:          257   40526</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">print</span>(<span class="st">"For the top 10 companies (worldwide) with the most patents, what are the top 5 USPTO tech main classes?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "For the top 10 companies (worldwide) with the most patents, what are the top 5 USPTO tech main classes?"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">print</span>(top_USPTO_main_classes[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]) <span class="co"># Take the first 10 elements of the ordered list.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;     mainclass_id patents
+#&gt;  1:          370    1672
+#&gt;  2:          455    1640
+#&gt;  3:          375     743
+#&gt;  4:          257     701
+#&gt;  5:          166     699
+#&gt;  6:          709     417
+#&gt;  7:          244     344
+#&gt;  8:          438     324
+#&gt;  9:          398     323
+#&gt; 10:          507     179</code></pre>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
